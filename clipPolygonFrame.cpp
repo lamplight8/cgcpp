@@ -1,7 +1,5 @@
 //clipLineFrame.cpp
 #include "clipPolygonFrame.h"
-//#include <iostream>
-//using namespace std;
 
 clipPolygonFrame::clipPolygonFrame(const wxString& title)
 : wxFrame{ NULL, -1, title, wxDefaultPosition, wxSize(WinWidth, WinHeight) }
@@ -14,15 +12,15 @@ clipPolygonFrame::clipPolygonFrame(const wxString& title)
     int col3{210};
     int col4{280};
 
-    wxStaticText* teleft = new wxStaticText{ setPanel, -1, wxT("left: "), wxPoint(col1, 10) };
-    tcleft = new wxTextCtrl{ setPanel, -1, wxT("140"), wxPoint(col2, 10) };
-    wxStaticText* tebottom = new wxStaticText{ setPanel, -1, wxT("bottom: "), wxPoint(col3, 10) };
-    tcbottom = new wxTextCtrl{ setPanel, -1, wxT("60"), wxPoint(col4, 10) };
+    wxStaticText* tex = new wxStaticText{ setPanel, -1, wxT("left x: "), wxPoint(col1, 10) };
+    tcx = new wxTextCtrl{ setPanel, -1, wxT("140"), wxPoint(col2, 10) };
+    wxStaticText* tey = new wxStaticText{ setPanel, -1, wxT("bottom y: "), wxPoint(col3, 10) };
+    tcy = new wxTextCtrl{ setPanel, -1, wxT("60"), wxPoint(col4, 10) };
 
-    wxStaticText* teright = new wxStaticText{ setPanel, -1, wxT("right: "), wxPoint(col1, 40) };
-    tcright = new wxTextCtrl{ setPanel, -1, wxT("220"), wxPoint(col2, 40) };
-    wxStaticText* tetop = new wxStaticText{ setPanel, -1, wxT("top: "), wxPoint(col3, 40) };
-    tctop = new wxTextCtrl{ setPanel, -1, wxT("140"), wxPoint(col4, 40) };
+    wxStaticText* tew = new wxStaticText{ setPanel, -1, wxT("width: "), wxPoint(col1, 40) };
+    tcw = new wxTextCtrl{ setPanel, -1, wxT("80"), wxPoint(col2, 40) };
+    wxStaticText* teh = new wxStaticText{ setPanel, -1, wxT("hight: "), wxPoint(col3, 40) };
+    tch = new wxTextCtrl{ setPanel, -1, wxT("80"), wxPoint(col4, 40) };
 
     wxStaticText* ten = new wxStaticText{ setPanel, -1, wxT("vertics: "), wxPoint(col1, 70) };
     tcn = new wxTextCtrl{ setPanel, -1, wxT("4"), wxPoint(col2, 70) };
@@ -61,10 +59,10 @@ clipPolygonFrame::clipPolygonFrame(const wxString& title)
     wxButton *butOldCOLOR = new wxButton{ setPanel, ID_OLDCOLOR, wxT("OldColor"), wxPoint(160, 280) };
     wxButton *butNewCOLOR = new wxButton{ setPanel, ID_NEWCOLOR, wxT("NewColor"), wxPoint(280, 280) };
 
-    tcleft->GetValue().ToInt(&rt.leftBottom.x);
-    tcbottom->GetValue().ToInt(&rt.leftBottom.y);
-    tcright->GetValue().ToInt(&rt.rightTop.x);
-    tctop->GetValue().ToInt(&rt.rightTop.y);
+    tcx->GetValue().ToInt(&rt.x);
+    tcy->GetValue().ToInt(&rt.y);
+    tcw->GetValue().ToInt(&rt.w);
+    tch->GetValue().ToInt(&rt.h);
 
     tcn->GetValue().ToInt(&n);
 
@@ -103,24 +101,35 @@ void clipPolygonFrame::OnPaint(wxPaintEvent& event)
 
     dc.SetPen(wxPen(oldColor));
 
-    int left = rt.leftBottom.x;
-    int bottom = rt.leftBottom.y;
-    int right = rt.rightTop.x;
-    int top = rt.rightTop.y;
+    int left = rt.x;
+    int bottom = rt.y;
+    int right = rt.x+rt.w;
+    int top = rt.y+rt.h;
     dc.DrawLine(wxPoint(left, bottom), wxPoint(right, bottom));
     dc.DrawLine(wxPoint(right, bottom), wxPoint(right, top));
     dc.DrawLine(wxPoint(right, top), wxPoint(left, top));
     dc.DrawLine(wxPoint(left, top), wxPoint(left, bottom));
 
     dc.DrawPolygon(n, ptv);
+
+    polygon poly(ptv, n);
+    polygon poly1 = poly.polyClip(poly, rt);
+    int k = poly1.size();
+    wxPoint *pt = new wxPoint[k];
+    for(int i=0; i<k; i++)
+    {
+        pt[i] = poly1.getPoint(i);
+    }
+    dc.SetBrush(wxBrush(newColor));
+    dc.DrawPolygon(k, pt);
 }
 
 void clipPolygonFrame::OnOk(wxCommandEvent& event)
 {
-    tcleft->GetValue().ToInt(&rt.leftBottom.x);
-    tcbottom->GetValue().ToInt(&rt.leftBottom.y);
-    tcright->GetValue().ToInt(&rt.rightTop.x);
-    tctop->GetValue().ToInt(&rt.rightTop.y);
+    tcx->GetValue().ToInt(&rt.x);
+    tcy->GetValue().ToInt(&rt.y);
+    tcw->GetValue().ToInt(&rt.w);
+    tch->GetValue().ToInt(&rt.h);
 
     wxPoint p[6];
     tcx0->GetValue().ToInt(&p[0].x);

@@ -1,20 +1,20 @@
 [
 {
   "directory": "C:/yj2024/cgcpp/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/vscg.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\vscg.dir\\main.cpp.obj -c C:\\yj2024\\cgcpp\\main.cpp",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/cgcpp.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\cgcpp.dir\\main.cpp.obj -c C:\\yj2024\\cgcpp\\main.cpp",
   "file": "C:/yj2024/cgcpp/main.cpp",
-  "output": "CMakeFiles/vscg.dir/main.cpp.obj"
+  "output": "CMakeFiles/cgcpp.dir/main.cpp.obj"
 },
 {
   "directory": "C:/yj2024/cgcpp/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/vscg.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\vscg.dir\\clipPolygon.cpp.obj -c C:\\yj2024\\cgcpp\\clipPolygon.cpp",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/cgcpp.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\cgcpp.dir\\clipPolygon.cpp.obj -c C:\\yj2024\\cgcpp\\clipPolygon.cpp",
   "file": "C:/yj2024/cgcpp/clipPolygon.cpp",
-  "output": "CMakeFiles/vscg.dir/clipPolygon.cpp.obj"
+  "output": "CMakeFiles/cgcpp.dir/clipPolygon.cpp.obj"
 },
 {
   "directory": "C:/yj2024/cgcpp/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/vscg.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\vscg.dir\\clipPolygonFrame.cpp.obj -c C:\\yj2024\\cgcpp\\clipPolygonFrame.cpp",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/cgcpp.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\cgcpp.dir\\clipPolygonFrame.cpp.obj -c C:\\yj2024\\cgcpp\\clipPolygonFrame.cpp",
   "file": "C:/yj2024/cgcpp/clipPolygonFrame.cpp",
-  "output": "CMakeFiles/vscg.dir/clipPolygonFrame.cpp.obj"
+  "output": "CMakeFiles/cgcpp.dir/clipPolygonFrame.cpp.obj"
 }
 ]

@@ -759,7 +759,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "vscg"
+			"value" : "cgcpp"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",
@@ -1224,6 +1224,42 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "TRUE"
+		},
+		{
+			"name" : "cgcpp_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/yj2024/cgcpp/build"
+		},
+		{
+			"name" : "cgcpp_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "cgcpp_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/yj2024/cgcpp"
 		},
 		{
 			"name" : "vscg_BINARY_DIR",

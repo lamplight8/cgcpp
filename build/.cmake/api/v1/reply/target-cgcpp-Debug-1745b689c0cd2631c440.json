@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "vscg.exe"
+			"path" : "cgcpp.exe"
 		},
 		{
-			"path" : "vscg.pdb"
+			"path" : "cgcpp.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -104,7 +104,7 @@
 			]
 		}
 	],
-	"id" : "vscg::@6890427a1f51a3e7e1df",
+	"id" : "cgcpp::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -139,8 +139,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "vscg",
-	"nameOnDisk" : "vscg.exe",
+	"name" : "cgcpp",
+	"nameOnDisk" : "cgcpp.exe",
 	"paths" : 
 	{
 		"build" : ".",

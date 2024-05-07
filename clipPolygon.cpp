@@ -39,33 +39,37 @@ int polygon::size()
     return vertics.size();
 }
 
+wxPoint polygon::getPoint(int k)
+{
+    return vertics[k];
+}
+
 polygon polygon::polyClip(polygon poly1, rect &rect1)
 {
     int x0, y0, x1, y1;
     polygon py0, py1, py2, py3;
-    //裁剪左边
-    x0 = rect1.leftBottom.x;
-    y0 = rect1.leftBottom.y;
-    x1 = rect1.leftBottom.x;
-    y1 = rect1.rightTop.y;
+    x0 = rect1.x;
+    y0 = rect1.y+rect1.h;
+    x1 = rect1.x;
+    y1 = rect1.y;
     py0 = edgeClip(poly1, wxPoint(x0,y0), wxPoint(x1,y1));
     //裁剪下边
-    x0 = rect1.leftBottom.x;
-    y0 = rect1.rightTop.y;
-    x1 = rect1.rightTop.x;
-    y1 = rect1.rightTop.y;
+    x0 = rect1.x+rect1.w;
+    y0 = rect1.y+rect1.h;
+    x1 = rect1.x;
+    y1 = rect1.y+rect1.h;
     py1 = edgeClip(py0, wxPoint(x0,y0), wxPoint(x1,y1));
     //裁剪右边
-    x0 = rect1.rightTop.x;
-    y0 = rect1.rightTop.y;
-    x1 = rect1.rightTop.x;
-    y1 = rect1.leftBottom.y;
+    x0 = rect1.x+rect1.w;
+    y0 = rect1.y;
+    x1 = rect1.x+rect1.w;
+    y1 = rect1.y+rect1.h;
     py2 = edgeClip(py1, wxPoint(x0,y0), wxPoint(x1,y1));
     //裁剪上边
-    x0 = rect1.rightTop.x;
-    y0 = rect1.leftBottom.y;
-    x1 = rect1.leftBottom.x;
-    y1 = rect1.leftBottom.y;
+    x0 = rect1.x;
+    y0 = rect1.y;
+    x1 = rect1.x+rect1.w;
+    y1 = rect1.y;
     py3 = edgeClip(py2, wxPoint(x0,y0), wxPoint(x1,y1));
     return py3;
 }
@@ -74,13 +78,13 @@ polygon polygon::edgeClip(polygon poly1, wxPoint p0, wxPoint p1)
 {
     wxVector<wxPoint> v;
     int i;
-    int m = poly1.vertics.size();
+    int m = poly1.size();
     wxPoint s, p;
     wxPoint pt;
-    s = poly1.vertics.at(m-1);
+    s = poly1.vertics[m-1];
     for(i=0; i<m; i++)
     {
-        p = poly1.vertics.at(i);
+        p = poly1.vertics[i];
         if(isInsideEdge(p,p0,p1))//点p在边(p0,p1)的内侧
         {
             if(isInsideEdge(s,p0,p1))//情况1

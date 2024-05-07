@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named vscg
+# Target rules for targets named cgcpp
 
 # Build rule for target.
-vscg: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 vscg
-.PHONY : vscg
+cgcpp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 cgcpp
+.PHONY : cgcpp
 
 # fast build rule for target.
-vscg/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/build
-.PHONY : vscg/fast
+cgcpp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/build
+.PHONY : cgcpp/fast
 
 clipPolygon.obj: clipPolygon.cpp.obj
 .PHONY : clipPolygon.obj
 
 # target to build an object file
 clipPolygon.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/clipPolygon.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/clipPolygon.cpp.obj
 .PHONY : clipPolygon.cpp.obj
 
 clipPolygon.i: clipPolygon.cpp.i
@@ -141,7 +141,7 @@ clipPolygon.i: clipPolygon.cpp.i
 
 # target to preprocess a source file
 clipPolygon.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/clipPolygon.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/clipPolygon.cpp.i
 .PHONY : clipPolygon.cpp.i
 
 clipPolygon.s: clipPolygon.cpp.s
@@ -149,7 +149,7 @@ clipPolygon.s: clipPolygon.cpp.s
 
 # target to generate assembly for a file
 clipPolygon.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/clipPolygon.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/clipPolygon.cpp.s
 .PHONY : clipPolygon.cpp.s
 
 clipPolygonFrame.obj: clipPolygonFrame.cpp.obj
@@ -157,7 +157,7 @@ clipPolygonFrame.obj: clipPolygonFrame.cpp.obj
 
 # target to build an object file
 clipPolygonFrame.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/clipPolygonFrame.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/clipPolygonFrame.cpp.obj
 .PHONY : clipPolygonFrame.cpp.obj
 
 clipPolygonFrame.i: clipPolygonFrame.cpp.i
@@ -165,7 +165,7 @@ clipPolygonFrame.i: clipPolygonFrame.cpp.i
 
 # target to preprocess a source file
 clipPolygonFrame.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/clipPolygonFrame.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/clipPolygonFrame.cpp.i
 .PHONY : clipPolygonFrame.cpp.i
 
 clipPolygonFrame.s: clipPolygonFrame.cpp.s
@@ -173,7 +173,7 @@ clipPolygonFrame.s: clipPolygonFrame.cpp.s
 
 # target to generate assembly for a file
 clipPolygonFrame.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/clipPolygonFrame.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/clipPolygonFrame.cpp.s
 .PHONY : clipPolygonFrame.cpp.s
 
 main.obj: main.cpp.obj
@@ -181,7 +181,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -189,7 +189,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -197,7 +197,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -208,7 +208,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... vscg
+	@echo ... cgcpp
 	@echo ... clipPolygon.obj
 	@echo ... clipPolygon.i
 	@echo ... clipPolygon.s

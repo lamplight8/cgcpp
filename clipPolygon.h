@@ -4,8 +4,8 @@
 class rect
 {
 public:
-    wxPoint leftBottom;
-    wxPoint rightTop;
+    int x, y;
+    int w, h;
 };
 
 class polygon
@@ -19,6 +19,7 @@ public:
     ~polygon();
 
     int size();
+    wxPoint getPoint(int k);
     polygon polyClip(polygon poly1, rect &rect1);
     polygon edgeClip(polygon poly1, wxPoint p0, wxPoint p1);
     bool isInsideEdge(wxPoint p, wxPoint p0, wxPoint p1);

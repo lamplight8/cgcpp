@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = C:\yj2024\cgcpp\build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/vscg.dir/all
+all: CMakeFiles/cgcpp.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -70,34 +70,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/vscg.dir/clean
+clean: CMakeFiles/cgcpp.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/vscg.dir
+# Target rules for target CMakeFiles/cgcpp.dir
 
 # All Build rule for target.
-CMakeFiles/vscg.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\yj2024\cgcpp\build\CMakeFiles --progress-num=1,2,3,4 "Built target vscg"
-.PHONY : CMakeFiles/vscg.dir/all
+CMakeFiles/cgcpp.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\yj2024\cgcpp\build\CMakeFiles --progress-num=1,2,3,4 "Built target cgcpp"
+.PHONY : CMakeFiles/cgcpp.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/vscg.dir/rule: cmake_check_build_system
+CMakeFiles/cgcpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\yj2024\cgcpp\build\CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/vscg.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/cgcpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\yj2024\cgcpp\build\CMakeFiles 0
-.PHONY : CMakeFiles/vscg.dir/rule
+.PHONY : CMakeFiles/cgcpp.dir/rule
 
 # Convenience name for target.
-vscg: CMakeFiles/vscg.dir/rule
-.PHONY : vscg
+cgcpp: CMakeFiles/cgcpp.dir/rule
+.PHONY : cgcpp
 
 # clean rule for target.
-CMakeFiles/vscg.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vscg.dir\build.make CMakeFiles/vscg.dir/clean
-.PHONY : CMakeFiles/vscg.dir/clean
+CMakeFiles/cgcpp.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cgcpp.dir\build.make CMakeFiles/cgcpp.dir/clean
+.PHONY : CMakeFiles/cgcpp.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

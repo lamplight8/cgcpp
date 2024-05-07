@@ -14,10 +14,10 @@ public:
     void OnNewColor(wxCommandEvent& event);
     void OnPaint(wxPaintEvent& event);
 private:
-    wxTextCtrl *tcleft;
-    wxTextCtrl *tcbottom;
-    wxTextCtrl *tcright;
-    wxTextCtrl *tctop;
+    wxTextCtrl *tcx;
+    wxTextCtrl *tcy;
+    wxTextCtrl *tcw;
+    wxTextCtrl *tch;
     wxTextCtrl *tcn;
     wxTextCtrl *tcx0;
     wxTextCtrl *tcy0;

@@ -1,6 +1,6 @@
 #cmakelists.txt
 cmake_minimum_required(VERSION 3.25.2)
-project(vscg VERSION 0.1.0 LANGUAGES CXX)
+project(cgcpp VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIREDON)
@@ -22,7 +22,7 @@ set(PROJECT_SOURCES
     clipPolygonFrame.cpp
 )
 
-add_executable(vscg  ${PROJECT_SOURCES})
+add_executable(cgcpp  ${PROJECT_SOURCES})
 
-target_link_libraries(vscg wxbase32u)
-target_link_libraries(vscg wxmsw32u_core)
+target_link_libraries(cgcpp wxbase32u)
+target_link_libraries(cgcpp wxmsw32u_core)

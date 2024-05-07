@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "vscg",
+					"name" : "cgcpp",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "vscg::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-vscg-Debug-121a0e77aeaae588c1f8.json",
-					"name" : "vscg",
+					"id" : "cgcpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cgcpp-Debug-1745b689c0cd2631c440.json",
+					"name" : "cgcpp",
 					"projectIndex" : 0
 				}
 			]
