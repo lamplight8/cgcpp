@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\vscg.dir/objects.a
+C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\vscg.dir/objects.a @CMakeFiles\vscg.dir\objects1.rsp
+C:\msys64\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\vscg.dir/objects.a -Wl,--no-whole-archive -o vscg.exe -Wl,--out-implib,libvscg.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\vscg.dir\linkLibs.rsp
