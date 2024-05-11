@@ -1,10 +1,20 @@
 //viewToWinFrame.cpp
 #include "viewToWinFrame.h"
+#include <wx/spinctrl.h>
+#include<iostream>
+using namespace std;
 
 viewToWinFrame::viewToWinFrame(const wxString& title)
 : wxFrame{ NULL, -1, title, wxDefaultPosition, wxSize(WinWidth, WinHeight) }
 {
-    //wxStaticText* textLabes = new wxStaticText{ this, -1, wxT("") };
+    wxStaticText* textLab1 = new wxStaticText{ this, -1, wxT("窗口宽度: "), wxPoint(60, 20) };
+    wxSpinCtrl* spinCtrl1 = new wxSpinCtrl(this, -1, wxT("0"), wxPoint(120,20), wxDefaultSize, 16384L, 0, 500);
+    wxStaticText* textLab2 = new wxStaticText{ this, -1, wxT("窗口高度: "), wxPoint(220, 20) };
+    wxSpinCtrl* spinCtrl2 = new wxSpinCtrl(this, -1, wxT("0"), wxPoint(280,20), wxDefaultSize, 16384L, 0, 500);
+    wxStaticText* textLab3 = new wxStaticText{ this, -1, wxT("视口宽度: "), wxPoint(380, 20) };
+    wxSpinCtrl* spinCtrl3 = new wxSpinCtrl(this, -1, wxT("0"), wxPoint(440,20), wxDefaultSize, 16384L, 0, 500);
+    wxStaticText* textLab4 = new wxStaticText{ this, -1, wxT("视口高度: "), wxPoint(540, 20) };
+    wxSpinCtrl* spinCtrl4 = new wxSpinCtrl(this, -1, wxT("0"), wxPoint(600,20), wxDefaultSize, 16384L, 0, 500);
 
     isInWindow = false;
     isInView = false;
@@ -53,9 +63,20 @@ viewToWinFrame::viewToWinFrame(const wxString& title)
     //初始化屏幕坐标系中的图形
     scrFigs.resize(4);
 
+    spinCtrl1->SetValue(winRect.width);
+    spinCtrl2->SetValue(winRect.height);
+    spinCtrl3->SetValue(viewRect.width);
+    spinCtrl4->SetValue(viewRect.height);
+
     Bind(wxEVT_LEFT_DOWN, viewToWinFrame::OnMouseLeftDown, this);
     Bind(wxEVT_MOTION, viewToWinFrame::OnMouseMove, this);
     Bind(wxEVT_LEFT_UP, viewToWinFrame::OnMouseLeftUp, this);
+
+    spinCtrl1->Bind(wxEVT_SPINCTRL, viewToWinFrame::OnSpin1, this);
+    spinCtrl2->Bind(wxEVT_SPINCTRL, viewToWinFrame::OnSpin2, this);
+    spinCtrl3->Bind(wxEVT_SPINCTRL, viewToWinFrame::OnSpin3, this);
+    spinCtrl4->Bind(wxEVT_SPINCTRL, viewToWinFrame::OnSpin4, this);
+
     this->Connect(wxEVT_PAINT, wxPaintEventHandler(viewToWinFrame::OnPaint));
 
     Centre();
@@ -218,5 +239,29 @@ void viewToWinFrame::drawRect(wxPaintDC* pdc, wxRect rect, wxColor clr)
     pdc->DrawLine(wxPoint(x0, y1), wxPoint(x1, y1));
     pdc->DrawLine(wxPoint(x1, y1), wxPoint(x1, y0));
     pdc->DrawLine(wxPoint(x1, y0), wxPoint(x0, y0));
+}
+
+void viewToWinFrame::OnSpin1(wxSpinEvent& event)
+{
+    winRect.width = event.GetValue();
+    Refresh();
+}
+
+void viewToWinFrame::OnSpin2(wxSpinEvent& event)
+{
+    winRect.height = event.GetValue();
+    Refresh();
+}
+
+void viewToWinFrame::OnSpin3(wxSpinEvent& event)
+{
+    viewRect.width = event.GetValue();
+    Refresh();
+}
+
+void viewToWinFrame::OnSpin4(wxSpinEvent& event)
+{
+    viewRect.height = event.GetValue();
+    Refresh();
 }
 

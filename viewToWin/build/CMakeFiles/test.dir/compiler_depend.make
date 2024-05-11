@@ -1208,6 +1208,7 @@ CMakeFiles/test.dir/viewToWinFrame.cpp.obj: C:/yj2024/cgcpp/viewToWin/viewToWinF
   C:/wxWidgets/include/wx/generic/logg.h \
   C:/wxWidgets/include/wx/generic/msgdlgg.h \
   C:/wxWidgets/include/wx/generic/scrolwin.h \
+  C:/wxWidgets/include/wx/generic/spinctlg.h \
   C:/wxWidgets/include/wx/generic/textdlgg.h \
   C:/wxWidgets/include/wx/geometry.h \
   C:/wxWidgets/include/wx/hash.h \
@@ -1303,6 +1304,8 @@ CMakeFiles/test.dir/viewToWinFrame.cpp.obj: C:/yj2024/cgcpp/viewToWin/viewToWinF
   C:/wxWidgets/include/wx/msw/region.h \
   C:/wxWidgets/include/wx/msw/scrolbar.h \
   C:/wxWidgets/include/wx/msw/slider.h \
+  C:/wxWidgets/include/wx/msw/spinbutt.h \
+  C:/wxWidgets/include/wx/msw/spinctrl.h \
   C:/wxWidgets/include/wx/msw/statbmp.h \
   C:/wxWidgets/include/wx/msw/statbox.h \
   C:/wxWidgets/include/wx/msw/stattext.h \
@@ -1327,6 +1330,7 @@ CMakeFiles/test.dir/viewToWinFrame.cpp.obj: C:/yj2024/cgcpp/viewToWin/viewToWinF
   C:/wxWidgets/include/wx/platinfo.h \
   C:/wxWidgets/include/wx/radiobox.h \
   C:/wxWidgets/include/wx/radiobut.h \
+  C:/wxWidgets/include/wx/range.h \
   C:/wxWidgets/include/wx/recguard.h \
   C:/wxWidgets/include/wx/region.h \
   C:/wxWidgets/include/wx/rtti.h \
@@ -1338,6 +1342,8 @@ CMakeFiles/test.dir/viewToWinFrame.cpp.obj: C:/yj2024/cgcpp/viewToWin/viewToWinF
   C:/wxWidgets/include/wx/sharedptr.h \
   C:/wxWidgets/include/wx/sizer.h \
   C:/wxWidgets/include/wx/slider.h \
+  C:/wxWidgets/include/wx/spinbutt.h \
+  C:/wxWidgets/include/wx/spinctrl.h \
   C:/wxWidgets/include/wx/statbmp.h \
   C:/wxWidgets/include/wx/statbox.h \
   C:/wxWidgets/include/wx/stattext.h \
@@ -1542,6 +1548,8 @@ C:/msys64/mingw64/include/c++/13.2.0/bits/basic_ios.tcc:
 C:/wxWidgets/include/wx/sizer.h:
 
 C:/msys64/mingw64/include/winreg.h:
+
+C:/wxWidgets/include/wx/msw/spinbutt.h:
 
 C:/msys64/mingw64/include/c++/13.2.0/bits/memoryfwd.h:
 
@@ -1766,6 +1774,8 @@ C:/msys64/mingw64/include/msxml.h:
 C:/msys64/mingw64/include/c++/13.2.0/bits/uses_allocator.h:
 
 C:/msys64/mingw64/include/pshpack8.h:
+
+C:/wxWidgets/include/wx/spinbutt.h:
 
 C:/wxWidgets/include/wx/wxcrtbase.h:
 
@@ -2768,3 +2778,11 @@ C:/yj2024/cgcpp/viewToWin/main.h:
 C:/yj2024/cgcpp/viewToWin/viewToWinFrame.h:
 
 C:/yj2024/cgcpp/viewToWin/viewToWinFrame.cpp:
+
+C:/wxWidgets/include/wx/generic/spinctlg.h:
+
+C:/wxWidgets/include/wx/msw/spinctrl.h:
+
+C:/wxWidgets/include/wx/range.h:
+
+C:/wxWidgets/include/wx/spinctrl.h:

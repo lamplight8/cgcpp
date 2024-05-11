@@ -11,6 +11,12 @@ public:
     void OnMouseLeftDown(wxMouseEvent& event);
     void OnMouseLeftUp(wxMouseEvent& event);
     void OnMouseMove(wxMouseEvent& event);
+
+    void OnSpin1(wxSpinEvent& event);
+    void OnSpin2(wxSpinEvent& event);
+    void OnSpin3(wxSpinEvent& event);
+    void OnSpin4(wxSpinEvent& event);
+
     void OnPaint(wxPaintEvent& event);
 
     void translate(wxRect& rect, wxPoint p);

@@ -553,4 +553,8 @@ CMakeFiles/test.dir/viewToWinFrame.cpp.obj: \
  C:/wxWidgets/include/wx/generic/textdlgg.h \
  C:/wxWidgets/include/wx/valtext.h C:/wxWidgets/include/wx/filedlg.h \
  C:/wxWidgets/include/wx/msw/filedlg.h C:/wxWidgets/include/wx/mdi.h \
- C:/wxWidgets/include/wx/msw/mdi.h
+ C:/wxWidgets/include/wx/msw/mdi.h C:/wxWidgets/include/wx/spinctrl.h \
+ C:/wxWidgets/include/wx/spinbutt.h C:/wxWidgets/include/wx/range.h \
+ C:/wxWidgets/include/wx/msw/spinbutt.h \
+ C:/wxWidgets/include/wx/msw/spinctrl.h \
+ C:/wxWidgets/include/wx/generic/spinctlg.h
