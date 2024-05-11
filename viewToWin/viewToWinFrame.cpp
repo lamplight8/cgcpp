@@ -54,7 +54,7 @@ viewToWinFrame::viewToWinFrame(const wxString& title)
     scrFigs.resize(4);
 
     Bind(wxEVT_LEFT_DOWN, viewToWinFrame::OnMouseLeftDown, this);
-    Bind(wxEVT_MOTION, viewToWinFrame::OnMouseLeftDown, this);
+    Bind(wxEVT_MOTION, viewToWinFrame::OnMouseMove, this);
     Bind(wxEVT_LEFT_UP, viewToWinFrame::OnMouseLeftUp, this);
     this->Connect(wxEVT_PAINT, wxPaintEventHandler(viewToWinFrame::OnPaint));
 
@@ -86,6 +86,8 @@ void viewToWinFrame::OnMouseLeftDown(wxMouseEvent& event)
 void viewToWinFrame::OnMouseLeftUp(wxMouseEvent& event)
 {
     SetCursor(wxNullCursor);
+    isInWindow=false;
+    isInView=false;
     Refresh();
 }
 
