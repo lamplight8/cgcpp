@@ -17,3 +17,6 @@ class house3dFrame: public wxFrame
 public:
     house3dFrame(const wxString& title);
 };
+
+const int ID_OK { 101 };
+const int ID_RESTORE { 102 };
