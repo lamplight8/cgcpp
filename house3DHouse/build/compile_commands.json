@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/yj2024/cgcpp/house3DHouse/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\test.dir\\main.cpp.obj -c C:\\yj2024\\cgcpp\\house3DHouse\\main.cpp",
+  "file": "C:/yj2024/cgcpp/house3DHouse/main.cpp",
+  "output": "CMakeFiles/test.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/yj2024/cgcpp/house3DHouse/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\test.dir\\house3dFrame.cpp.obj -c C:\\yj2024\\cgcpp\\house3DHouse\\house3dFrame.cpp",
+  "file": "C:/yj2024/cgcpp/house3DHouse/house3dFrame.cpp",
+  "output": "CMakeFiles/test.dir/house3dFrame.cpp.obj"
+},
+{
+  "directory": "C:/yj2024/cgcpp/house3DHouse/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\test.dir\\rightProjPanel.cpp.obj -c C:\\yj2024\\cgcpp\\house3DHouse\\rightProjPanel.cpp",
+  "file": "C:/yj2024/cgcpp/house3DHouse/rightProjPanel.cpp",
+  "output": "CMakeFiles/test.dir/rightProjPanel.cpp.obj"
+},
+{
+  "directory": "C:/yj2024/cgcpp/house3DHouse/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\test.dir\\rightLaytPanel.cpp.obj -c C:\\yj2024\\cgcpp\\house3DHouse\\rightLaytPanel.cpp",
+  "file": "C:/yj2024/cgcpp/house3DHouse/rightLaytPanel.cpp",
+  "output": "CMakeFiles/test.dir/rightLaytPanel.cpp.obj"
+}
+]
