@@ -1,8 +1,8 @@
-CMakeFiles/test.dir/rightLaytPanel.cpp.obj: \
- C:\yj2024\cgcpp\house3DHouse\rightLaytPanel.cpp \
- C:\yj2024\cgcpp\house3DHouse\rightLaytPanel.h \
- C:/wxWidgets/include/wx/wx.h C:/wxWidgets/include/wx/defs.h \
- C:/wxWidgets/include/wx/platform.h C:/wxWidgets/include/wx/compiler.h \
+CMakeFiles/test.dir/object3d.cpp.obj: \
+ C:\yj2024\cgcpp\house3DHouse\object3d.cpp \
+ C:\yj2024\cgcpp\house3DHouse\object3d.h C:/wxWidgets/include/wx/wx.h \
+ C:/wxWidgets/include/wx/defs.h C:/wxWidgets/include/wx/platform.h \
+ C:/wxWidgets/include/wx/compiler.h \
  C:/wxWidgets/lib/gcc_dll/mswu/wx/setup.h \
  C:/wxWidgets/include/wx/msw/libraries.h \
  C:/wxWidgets/include/wx/msw/gccpriv.h \
@@ -553,6 +553,4 @@ CMakeFiles/test.dir/rightLaytPanel.cpp.obj: \
  C:/wxWidgets/include/wx/generic/textdlgg.h \
  C:/wxWidgets/include/wx/valtext.h C:/wxWidgets/include/wx/filedlg.h \
  C:/wxWidgets/include/wx/msw/filedlg.h C:/wxWidgets/include/wx/mdi.h \
- C:/wxWidgets/include/wx/msw/mdi.h C:/wxWidgets/include/wx/splitter.h \
- C:/wxWidgets/include/wx/generic/splitter.h \
- C:/wxWidgets/include/wx/graphics.h
+ C:/wxWidgets/include/wx/msw/mdi.h

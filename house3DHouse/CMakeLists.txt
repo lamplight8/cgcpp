@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
     rightProjPanel.cpp
     rightLaytPanel.h
     rightLaytPanel.cpp
+    object3d.h
+    object3d.cpp
 )
 
 add_executable(test  ${PROJECT_SOURCES})

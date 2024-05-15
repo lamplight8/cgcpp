@@ -554,4 +554,5 @@ CMakeFiles/test.dir/rightProjPanel.cpp.obj: \
  C:/wxWidgets/include/wx/valtext.h C:/wxWidgets/include/wx/filedlg.h \
  C:/wxWidgets/include/wx/msw/filedlg.h C:/wxWidgets/include/wx/mdi.h \
  C:/wxWidgets/include/wx/msw/mdi.h C:/wxWidgets/include/wx/splitter.h \
- C:/wxWidgets/include/wx/generic/splitter.h
+ C:/wxWidgets/include/wx/generic/splitter.h \
+ C:/wxWidgets/include/wx/graphics.h

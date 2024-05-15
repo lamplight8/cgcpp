@@ -176,6 +176,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+object3d.obj: object3d.cpp.obj
+.PHONY : object3d.obj
+
+# target to build an object file
+object3d.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/object3d.cpp.obj
+.PHONY : object3d.cpp.obj
+
+object3d.i: object3d.cpp.i
+.PHONY : object3d.i
+
+# target to preprocess a source file
+object3d.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/object3d.cpp.i
+.PHONY : object3d.cpp.i
+
+object3d.s: object3d.cpp.s
+.PHONY : object3d.s
+
+# target to generate assembly for a file
+object3d.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/object3d.cpp.s
+.PHONY : object3d.cpp.s
+
 rightLaytPanel.obj: rightLaytPanel.cpp.obj
 .PHONY : rightLaytPanel.obj
 
@@ -239,6 +263,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... object3d.obj
+	@echo ... object3d.i
+	@echo ... object3d.s
 	@echo ... rightLaytPanel.obj
 	@echo ... rightLaytPanel.i
 	@echo ... rightLaytPanel.s

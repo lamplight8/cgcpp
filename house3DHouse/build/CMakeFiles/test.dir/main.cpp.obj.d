@@ -557,4 +557,5 @@ CMakeFiles/test.dir/main.cpp.obj: C:\yj2024\cgcpp\house3DHouse\main.cpp \
  C:\yj2024\cgcpp\house3DHouse\rightProjPanel.h \
  C:/wxWidgets/include/wx/splitter.h \
  C:/wxWidgets/include/wx/generic/splitter.h \
+ C:/wxWidgets/include/wx/graphics.h \
  C:\yj2024\cgcpp\house3DHouse\rightLaytPanel.h
