@@ -2,9 +2,9 @@
 
 #include <wx/wx.h>
 #include <math.h>
+#include <wx/graphics.h>
 
 const double PI = 3.1415926;
-
 
 class object3d
 {

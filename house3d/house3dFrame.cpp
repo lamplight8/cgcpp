@@ -1,7 +1,5 @@
 //house3dFrame.cpp
 #include "house3dFrame.h"
-#include <iostream>
-using namespace std;
 
 house3dFrame::house3dFrame(const wxString& title)
 : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(Width, Height))

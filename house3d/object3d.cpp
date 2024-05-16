@@ -1,7 +1,5 @@
 
 #include "object3d.h"
-#include <wx/dcgraph.h>
-#include <wx/graphics.h>
 
 object3d::object3d()
 :nProjectionType(0)

@@ -1,3 +1,0 @@
-C:/yj2024/cgcpp/house3DHouse/build/CMakeFiles/test.dir
-C:/yj2024/cgcpp/house3DHouse/build/CMakeFiles/edit_cache.dir
-C:/yj2024/cgcpp/house3DHouse/build/CMakeFiles/rebuild_cache.dir

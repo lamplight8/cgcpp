@@ -1,9 +1,6 @@
 //rightPanel.cpp
 
 #include "rightPanel.h"
-#include <wx/dcgraph.h>
-#include <iostream>
-using namespace std;
 
 rightProjPanel::rightProjPanel(wxSplitterWindow * parent)
 : wxPanel(parent, wxID_NEW, wxDefaultPosition, wxDefaultSize, wxBORDER_DOUBLE)

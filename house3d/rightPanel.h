@@ -2,7 +2,6 @@
 
 #include <wx/wx.h>
 #include <wx/splitter.h>
-#include <wx/graphics.h>
 #include "object3d.h"
 
 class rightProjPanel: public wxPanel
