@@ -98,41 +98,26 @@ CMakeFiles/test.dir/house3dFrame.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/house3dFrame.cpp.s"
 	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\yj2024\cgcpp\house3DHouse\house3dFrame.cpp -o CMakeFiles\test.dir\house3dFrame.cpp.s
 
-CMakeFiles/test.dir/rightProjPanel.cpp.obj: CMakeFiles/test.dir/flags.make
-CMakeFiles/test.dir/rightProjPanel.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
-CMakeFiles/test.dir/rightProjPanel.cpp.obj: C:/yj2024/cgcpp/house3DHouse/rightProjPanel.cpp
-CMakeFiles/test.dir/rightProjPanel.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\yj2024\cgcpp\house3DHouse\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/rightProjPanel.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/rightProjPanel.cpp.obj -MF CMakeFiles\test.dir\rightProjPanel.cpp.obj.d -o CMakeFiles\test.dir\rightProjPanel.cpp.obj -c C:\yj2024\cgcpp\house3DHouse\rightProjPanel.cpp
+CMakeFiles/test.dir/rightPanel.cpp.obj: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/rightPanel.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
+CMakeFiles/test.dir/rightPanel.cpp.obj: C:/yj2024/cgcpp/house3DHouse/rightPanel.cpp
+CMakeFiles/test.dir/rightPanel.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\yj2024\cgcpp\house3DHouse\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/rightPanel.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/rightPanel.cpp.obj -MF CMakeFiles\test.dir\rightPanel.cpp.obj.d -o CMakeFiles\test.dir\rightPanel.cpp.obj -c C:\yj2024\cgcpp\house3DHouse\rightPanel.cpp
 
-CMakeFiles/test.dir/rightProjPanel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/rightProjPanel.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\yj2024\cgcpp\house3DHouse\rightProjPanel.cpp > CMakeFiles\test.dir\rightProjPanel.cpp.i
+CMakeFiles/test.dir/rightPanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/rightPanel.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\yj2024\cgcpp\house3DHouse\rightPanel.cpp > CMakeFiles\test.dir\rightPanel.cpp.i
 
-CMakeFiles/test.dir/rightProjPanel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/rightProjPanel.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\yj2024\cgcpp\house3DHouse\rightProjPanel.cpp -o CMakeFiles\test.dir\rightProjPanel.cpp.s
-
-CMakeFiles/test.dir/rightLaytPanel.cpp.obj: CMakeFiles/test.dir/flags.make
-CMakeFiles/test.dir/rightLaytPanel.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
-CMakeFiles/test.dir/rightLaytPanel.cpp.obj: C:/yj2024/cgcpp/house3DHouse/rightLaytPanel.cpp
-CMakeFiles/test.dir/rightLaytPanel.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\yj2024\cgcpp\house3DHouse\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.dir/rightLaytPanel.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/rightLaytPanel.cpp.obj -MF CMakeFiles\test.dir\rightLaytPanel.cpp.obj.d -o CMakeFiles\test.dir\rightLaytPanel.cpp.obj -c C:\yj2024\cgcpp\house3DHouse\rightLaytPanel.cpp
-
-CMakeFiles/test.dir/rightLaytPanel.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/rightLaytPanel.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\yj2024\cgcpp\house3DHouse\rightLaytPanel.cpp > CMakeFiles\test.dir\rightLaytPanel.cpp.i
-
-CMakeFiles/test.dir/rightLaytPanel.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/rightLaytPanel.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\yj2024\cgcpp\house3DHouse\rightLaytPanel.cpp -o CMakeFiles\test.dir\rightLaytPanel.cpp.s
+CMakeFiles/test.dir/rightPanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/rightPanel.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\yj2024\cgcpp\house3DHouse\rightPanel.cpp -o CMakeFiles\test.dir\rightPanel.cpp.s
 
 CMakeFiles/test.dir/object3d.cpp.obj: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/object3d.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
 CMakeFiles/test.dir/object3d.cpp.obj: C:/yj2024/cgcpp/house3DHouse/object3d.cpp
 CMakeFiles/test.dir/object3d.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\yj2024\cgcpp\house3DHouse\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test.dir/object3d.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\yj2024\cgcpp\house3DHouse\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.dir/object3d.cpp.obj"
 	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/object3d.cpp.obj -MF CMakeFiles\test.dir\object3d.cpp.obj.d -o CMakeFiles\test.dir\object3d.cpp.obj -c C:\yj2024\cgcpp\house3DHouse\object3d.cpp
 
 CMakeFiles/test.dir/object3d.cpp.i: cmake_force
@@ -147,8 +132,7 @@ CMakeFiles/test.dir/object3d.cpp.s: cmake_force
 test_OBJECTS = \
 "CMakeFiles/test.dir/main.cpp.obj" \
 "CMakeFiles/test.dir/house3dFrame.cpp.obj" \
-"CMakeFiles/test.dir/rightProjPanel.cpp.obj" \
-"CMakeFiles/test.dir/rightLaytPanel.cpp.obj" \
+"CMakeFiles/test.dir/rightPanel.cpp.obj" \
 "CMakeFiles/test.dir/object3d.cpp.obj"
 
 # External object files for target test
@@ -156,14 +140,13 @@ test_EXTERNAL_OBJECTS =
 
 test.exe: CMakeFiles/test.dir/main.cpp.obj
 test.exe: CMakeFiles/test.dir/house3dFrame.cpp.obj
-test.exe: CMakeFiles/test.dir/rightProjPanel.cpp.obj
-test.exe: CMakeFiles/test.dir/rightLaytPanel.cpp.obj
+test.exe: CMakeFiles/test.dir/rightPanel.cpp.obj
 test.exe: CMakeFiles/test.dir/object3d.cpp.obj
 test.exe: CMakeFiles/test.dir/build.make
 test.exe: CMakeFiles/test.dir/linkLibs.rsp
 test.exe: CMakeFiles/test.dir/objects1.rsp
 test.exe: CMakeFiles/test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\yj2024\cgcpp\house3DHouse\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable test.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\yj2024\cgcpp\house3DHouse\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable test.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\test.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

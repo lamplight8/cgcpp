@@ -1,52 +1,33 @@
 //object3d.h
+
 #include <wx/wx.h>
+#include <math.h>
 
 const double PI = 3.1415926;
+
+
 class object3d
 {
-private:
-    int nProjectionType;// 投影类型, 0:透视投影 1:平行投影
-    double VRP[3]; //视平面参考点(相对于世界坐标系)
-    double Theta; //视图参考坐标系与z轴的偏角
-    double Phi; //视图参考坐标系与y轴的偏角
-    double Delta; //视图参考坐标系与x轴的偏角
-    double PRP[3]; //投影参考点(相对于视图参考坐标系)
-    double CW[2]; //窗口中心点(相对于视图参考坐标系)
-
-    double wcHouse[14][3];// 世界坐标系中的房屋坐标，原始数据
-    double vcHouse[14][3]; //视图参考坐标系中的房屋坐标
-    int scHouse[14][2]; //屏幕坐标系中的房屋坐标
-    double lPRP[3]; //布局图所用的投影参考点
-    double lwcWC[4][3]; //布局图中的世界坐标系(相对于世界坐标系)
-    int lscWC[4][2]; //布局图中的世界坐标系(相对于屏幕坐标系)
-    double lwcVRC[4][3]; //布局图中的视图参考坐标系(相对于世界坐标系)
-    double lvcVRC[4][3];
-    int lscVRC[4][2]; //布局图中的视图参考坐标系(相对于世界坐标系)
-    double lwcPRP[2][3]; //布局图中的投影参考点(相对于世界坐标系)
-    double lvcPRP[2][3];
-    int lscPRP[2][2]; //布局图中的投影参考点(相对于世界坐标系)
-    double MT[4][4]; //三维变换矩阵
-    double MP[4][4]; //投影变换矩阵
-
 public:
-    object3d(int t, 
+    object3d();
+
+    //重置房屋的投影参数
+    void setParameter(
+        int t, 
         double x, double y, double z,
         double u, double v, double n,
         double th, double ph, double dl,
         double cw, double cv
     );
     
-    void setProjectionType(int n);
-    void setVRP(double vrp0, double vrp1, double vrp2);
-    void setAngle(double th, double ph, double dt);
-    void setPRP(double prp0, double prp1, double prp2);
-    void setCW(double cw0, double cw1);
-
     // 显示布局图，供CLayoutView调用
-    void ShowLayout(wxPaintDC* pdc);
+    void ShowLayout(wxGraphicsContext* pt);
 
     // 显示投影图，供CProjectionView调用
-    void ShowProjection(wxPaintDC* pdc);
+    void ShowProjection(wxGraphicsContext* pt);
+
+    // 绘制房子
+    void DrawHouse(wxGraphicsContext* pt);
 
     //三维变换
     void Transform(double MS[][3], double MO[][3], int nRow, double MT[4][4]);
@@ -66,7 +47,31 @@ public:
     // 投影矩阵
     void GenerateMatricProject(double PRP[3], double MP[4][4], int nType);
 
-    // 绘制房子
-    void DrawHouse(wxPaintDC* pdc);
+private:
+    int nProjectionType;// 投影类型, 0:透视投影 1:平行投影
+    double VRP[3]; //视平面参考点(相对于世界坐标系)
+    double Theta; //视图参考坐标系与z轴的偏角
+    double Phi; //视图参考坐标系与y轴的偏角
+    double Delta; //视图参考坐标系与x轴的偏角
+    double PRP[3]; //投影参考点(相对于视图参考坐标系)
+    double CW[2]; //窗口中心点(相对于视图参考坐标系)
 
+    double wcHouse[14][3];// 世界坐标系中的房屋坐标，原始数据
+    double vcHouse[14][3]; //视图参考坐标系中的房屋坐标
+    int scHouse[14][2]; //屏幕坐标系中的房屋坐标
+
+    double lPRP[3]; //布局图所用的投影参考点
+    double lwcWC[4][3]; //布局图中的世界坐标系(相对于世界坐标系)
+    int lscWC[4][2]; //布局图中的世界坐标系(相对于屏幕坐标系)
+    double lwcVRC[4][3]; //布局图中的视图参考坐标系(相对于世界坐标系)
+    double lvcVRC[4][3];
+
+    int lscVRC[4][2]; //布局图中的视图参考坐标系(相对于世界坐标系)
+    double lwcPRP[2][3]; //布局图中的投影参考点(相对于世界坐标系)
+    double lvcPRP[2][3];
+    int lscPRP[2][2]; //布局图中的投影参考点(相对于世界坐标系)
+
+    double MT[4][4]; //三维变换矩阵
+    double MP[4][4]; //投影变换矩阵
 };
+

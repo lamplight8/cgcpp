@@ -555,4 +555,5 @@ CMakeFiles/test.dir/rightProjPanel.cpp.obj: \
  C:/wxWidgets/include/wx/msw/filedlg.h C:/wxWidgets/include/wx/mdi.h \
  C:/wxWidgets/include/wx/msw/mdi.h C:/wxWidgets/include/wx/splitter.h \
  C:/wxWidgets/include/wx/generic/splitter.h \
- C:/wxWidgets/include/wx/graphics.h
+ C:/wxWidgets/include/wx/graphics.h \
+ C:\yj2024\cgcpp\house3DHouse\object3d.h

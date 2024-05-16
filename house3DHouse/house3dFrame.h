@@ -1,6 +1,5 @@
 //house3dFrame.h
-#include "rightProjPanel.h"
-#include "rightLaytPanel.h"
+#include "rightPanel.h"
 
 const int Width { 800 };
 const int Height { 600 };
@@ -11,6 +10,10 @@ public:
     house3dFrame(const wxString& title);
     void OnApple(wxCommandEvent& event);
     void OnRestore(wxCommandEvent& event);
+
+public:
+    rightProjPanel* rp1;
+    rightLaytPanel* rp2;
 
 private:
     wxRadioButton* radio1;
@@ -32,10 +35,10 @@ private:
     wxTextCtrl* textCV;
 
     int projType;
-    int vrpx, vrpy, vrpz;
-    int prpu, prpv, prpn;
-    int theta, phi, delta;
-    int cu, cv;
+    double vrpx, vrpy, vrpz;
+    double prpu, prpv, prpn;
+    double theta, phi, delta;
+    double cu, cv;
 };
 
 const int ID_APPLE { 101 };

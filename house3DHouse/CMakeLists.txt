@@ -18,10 +18,8 @@ set(PROJECT_SOURCES
     main.cpp
     house3dFrame.h
     house3dFrame.cpp
-    rightProjPanel.h
-    rightProjPanel.cpp
-    rightLaytPanel.h
-    rightLaytPanel.cpp
+    rightPanel.h
+    rightPanel.cpp
     object3d.h
     object3d.cpp
 )

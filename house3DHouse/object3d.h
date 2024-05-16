@@ -1,10 +1,12 @@
 //object3d.h
 #include <wx/wx.h>
+#include <wx/graphics.h>
+#include <iostream>
+using namespace std;
 
-const double PI = 3.1415926;
 class object3d
 {
-private:
+public:
     int nProjectionType;// 投影类型, 0:透视投影 1:平行投影
     double VRP[3]; //视平面参考点(相对于世界坐标系)
     double Theta; //视图参考坐标系与z轴的偏角
@@ -29,27 +31,32 @@ private:
     double MP[4][4]; //投影变换矩阵
 
 public:
-    object3d(int t, 
+    object3d();
+    object3d(
+        int t, 
         double x, double y, double z,
         double u, double v, double n,
         double th, double ph, double dl,
         double cw, double cv
     );
-    
-    void setProjectionType(int n);
-    void setVRP(double vrp0, double vrp1, double vrp2);
-    void setAngle(double th, double ph, double dt);
-    void setPRP(double prp0, double prp1, double prp2);
-    void setCW(double cw0, double cw1);
 
     // 显示布局图，供CLayoutView调用
-    void ShowLayout(wxPaintDC* pdc);
+    void ShowLayout(wxGraphicsContext* pgc);
 
     // 显示投影图，供CProjectionView调用
-    void ShowProjection(wxPaintDC* pdc);
+    void ShowProjection(wxGraphicsContext* pgc);
 
     // 绘制房子
-    void DrawHouse(wxPaintDC* pdc);
+    void DrawHouse(wxGraphicsContext* pgc);
+
+    //重置房屋的投影参数
+    void setParameter(
+        int t, 
+        double x, double y, double z,
+        double u, double v, double n,
+        double th, double ph, double dl,
+        double cw, double cv
+    );
 
     //三维变换
     void Transform(double MS[][3], double MO[][3], int nRow, double MT[4][4]);

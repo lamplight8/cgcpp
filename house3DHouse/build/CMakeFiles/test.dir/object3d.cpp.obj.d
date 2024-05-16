@@ -553,4 +553,4 @@ CMakeFiles/test.dir/object3d.cpp.obj: \
  C:/wxWidgets/include/wx/generic/textdlgg.h \
  C:/wxWidgets/include/wx/valtext.h C:/wxWidgets/include/wx/filedlg.h \
  C:/wxWidgets/include/wx/msw/filedlg.h C:/wxWidgets/include/wx/mdi.h \
- C:/wxWidgets/include/wx/msw/mdi.h
+ C:/wxWidgets/include/wx/msw/mdi.h C:/wxWidgets/include/wx/graphics.h

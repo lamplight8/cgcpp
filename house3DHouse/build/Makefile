@@ -200,53 +200,29 @@ object3d.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/object3d.cpp.s
 .PHONY : object3d.cpp.s
 
-rightLaytPanel.obj: rightLaytPanel.cpp.obj
-.PHONY : rightLaytPanel.obj
+rightPanel.obj: rightPanel.cpp.obj
+.PHONY : rightPanel.obj
 
 # target to build an object file
-rightLaytPanel.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightLaytPanel.cpp.obj
-.PHONY : rightLaytPanel.cpp.obj
+rightPanel.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightPanel.cpp.obj
+.PHONY : rightPanel.cpp.obj
 
-rightLaytPanel.i: rightLaytPanel.cpp.i
-.PHONY : rightLaytPanel.i
-
-# target to preprocess a source file
-rightLaytPanel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightLaytPanel.cpp.i
-.PHONY : rightLaytPanel.cpp.i
-
-rightLaytPanel.s: rightLaytPanel.cpp.s
-.PHONY : rightLaytPanel.s
-
-# target to generate assembly for a file
-rightLaytPanel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightLaytPanel.cpp.s
-.PHONY : rightLaytPanel.cpp.s
-
-rightProjPanel.obj: rightProjPanel.cpp.obj
-.PHONY : rightProjPanel.obj
-
-# target to build an object file
-rightProjPanel.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightProjPanel.cpp.obj
-.PHONY : rightProjPanel.cpp.obj
-
-rightProjPanel.i: rightProjPanel.cpp.i
-.PHONY : rightProjPanel.i
+rightPanel.i: rightPanel.cpp.i
+.PHONY : rightPanel.i
 
 # target to preprocess a source file
-rightProjPanel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightProjPanel.cpp.i
-.PHONY : rightProjPanel.cpp.i
+rightPanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightPanel.cpp.i
+.PHONY : rightPanel.cpp.i
 
-rightProjPanel.s: rightProjPanel.cpp.s
-.PHONY : rightProjPanel.s
+rightPanel.s: rightPanel.cpp.s
+.PHONY : rightPanel.s
 
 # target to generate assembly for a file
-rightProjPanel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightProjPanel.cpp.s
-.PHONY : rightProjPanel.cpp.s
+rightPanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/rightPanel.cpp.s
+.PHONY : rightPanel.cpp.s
 
 # Help Target
 help:
@@ -266,12 +242,9 @@ help:
 	@echo ... object3d.obj
 	@echo ... object3d.i
 	@echo ... object3d.s
-	@echo ... rightLaytPanel.obj
-	@echo ... rightLaytPanel.i
-	@echo ... rightLaytPanel.s
-	@echo ... rightProjPanel.obj
-	@echo ... rightProjPanel.i
-	@echo ... rightProjPanel.s
+	@echo ... rightPanel.obj
+	@echo ... rightPanel.i
+	@echo ... rightPanel.s
 .PHONY : help
 
 

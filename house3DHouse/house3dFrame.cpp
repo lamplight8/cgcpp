@@ -1,16 +1,18 @@
 //house3dFrame.cpp
 #include "house3dFrame.h"
+#include <iostream>
+using namespace std;
 
 house3dFrame::house3dFrame(const wxString& title)
 : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(Width, Height))
 {
     //设置控制面板、投影面板、布局面板
     wxSplitterWindow *spl = new wxSplitterWindow(this, -1, wxDefaultPosition, wxSize(Width, Height));//总的可裂变窗口
-    wxSplitterWindow *splRight = new wxSplitterWindow(spl, -1, wxDefaultPosition, wxSize(Width, Height));//右面可裂变窗口
+    wxSplitterWindow *splRight = new wxSplitterWindow(spl, -1, wxDefaultPosition, wxSize(550, Height));//右面可裂变窗口
 
     wxPanel* ctrlPanel = new wxPanel(spl, wxID_ANY, wxDefaultPosition, wxDefaultSize);//产生左边控制面板
-    rightProjPanel* rp1 = new rightProjPanel(splRight);//产生右面投影视图面板
-    rightLaytPanel* rp2 = new rightLaytPanel(splRight);//产生右面布局视图面板
+    rp1 = new rightProjPanel(splRight);//产生右面投影视图面板
+    rp2 = new rightLaytPanel(splRight);//产生右面布局视图面板
 
     spl->SplitVertically(ctrlPanel, splRight);
     splRight->SplitHorizontally(rp1, rp2);
@@ -60,24 +62,42 @@ house3dFrame::house3dFrame(const wxString& title)
     wxButton *butOk = new wxButton{ ctrlPanel, ID_APPLE, wxT("Apple"), wxPoint(20, 520) };
     wxButton *butRestore = new wxButton{ ctrlPanel, ID_RESTORE, wxT("Retore"), wxPoint(120, 520) };
 
+    Connect(ID_APPLE, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(house3dFrame::OnApple));
+    Connect(ID_RESTORE, wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(house3dFrame::OnRestore));
+
     //读取初始面板参数
     if(radio1->GetValue())
-        projType = 1;
+        projType = 0;
 
-    vrpTextX->GetValue().ToInt(&vrpx);
-    vrpTextY->GetValue().ToInt(&vrpy);
-    vrpTextZ->GetValue().ToInt(&vrpz);
+    vrpTextX->GetValue().ToDouble(&vrpx);
+    vrpTextY->GetValue().ToDouble(&vrpy);
+    vrpTextZ->GetValue().ToDouble(&vrpz);
 
-    prpTextU->GetValue().ToInt(&prpu);
-    prpTextV->GetValue().ToInt(&prpv);
-    prpTextN->GetValue().ToInt(&prpn);
+    prpTextU->GetValue().ToDouble(&prpu);
+    prpTextV->GetValue().ToDouble(&prpv);
+    prpTextN->GetValue().ToDouble(&prpn);
 
-    textTheta->GetValue().ToInt(&theta);
-    textPhi->GetValue().ToInt(&phi);
-    textDelta->GetValue().ToInt(&delta);
+    textTheta->GetValue().ToDouble(&theta);
+    textPhi->GetValue().ToDouble(&phi);
+    textDelta->GetValue().ToDouble(&delta);
 
-    textCU->GetValue().ToInt(&cu);
-    textCV->GetValue().ToInt(&cv);
+    textCU->GetValue().ToDouble(&cu);
+    textCV->GetValue().ToDouble(&cv);
+
+    rp1->o3d_project->setParameter(
+        projType,
+        vrpx, vrpy, vrpz,
+        prpu, prpv, prpn,
+        theta, phi, delta,
+        cu, cv
+    );
+    rp2->o3d_layout->setParameter(
+        projType,
+        vrpx, vrpy, vrpz,
+        prpu, prpv, prpn,
+        theta, phi, delta,
+        cu, cv
+    );
 
     Center();
 }
@@ -86,24 +106,41 @@ house3dFrame::house3dFrame(const wxString& title)
 void house3dFrame::OnApple(wxCommandEvent& event)
 {
     if(radio1->GetValue())
-        projType = 1;
+        projType = 0;
     
-    vrpTextX->GetValue().ToInt(&vrpx);
-    vrpTextY->GetValue().ToInt(&vrpy);
-    vrpTextZ->GetValue().ToInt(&vrpz);
+    vrpTextX->GetValue().ToDouble(&vrpx);
+    vrpTextY->GetValue().ToDouble(&vrpy);
+    vrpTextZ->GetValue().ToDouble(&vrpz);
 
-    prpTextU->GetValue().ToInt(&prpu);
-    prpTextV->GetValue().ToInt(&prpv);
-    prpTextN->GetValue().ToInt(&prpn);
+    prpTextU->GetValue().ToDouble(&prpu);
+    prpTextV->GetValue().ToDouble(&prpv);
+    prpTextN->GetValue().ToDouble(&prpn);
 
-    textTheta->GetValue().ToInt(&theta);
-    textPhi->GetValue().ToInt(&phi);
-    textDelta->GetValue().ToInt(&delta);
+    textTheta->GetValue().ToDouble(&theta);
+    textPhi->GetValue().ToDouble(&phi);
+    textDelta->GetValue().ToDouble(&delta);
 
-    textCU->GetValue().ToInt(&cu);
-    textCV->GetValue().ToInt(&cv);
+    textCU->GetValue().ToDouble(&cu);
+    textCV->GetValue().ToDouble(&cv);
 
-    Refresh();
+    rp1->o3d_project->setParameter(
+        projType,
+        vrpx, vrpy, vrpz,
+        prpu, prpv, prpn,
+        theta, phi, delta,
+        cu, cv
+    );
+    rp2->o3d_layout->setParameter(
+        projType,
+        vrpx, vrpy, vrpz,
+        prpu, prpv, prpn,
+        theta, phi, delta,
+        cu, cv
+    );
+
+    this->Refresh();
+    rp1->Refresh();
+    rp2->Refresh();
 }
 
 //复位面板参数
@@ -123,22 +160,39 @@ void house3dFrame::OnRestore(wxCommandEvent& event)
     textCV->SetValue(wxT("0"));
 
     if(radio1->GetValue())
-        projType = 1;
+        projType = 0;
         
-    vrpTextX->GetValue().ToInt(&vrpx);
-    vrpTextY->GetValue().ToInt(&vrpy);
-    vrpTextZ->GetValue().ToInt(&vrpz);
+    vrpTextX->GetValue().ToDouble(&vrpx);
+    vrpTextY->GetValue().ToDouble(&vrpy);
+    vrpTextZ->GetValue().ToDouble(&vrpz);
 
-    prpTextU->GetValue().ToInt(&prpu);
-    prpTextV->GetValue().ToInt(&prpv);
-    prpTextN->GetValue().ToInt(&prpn);
+    prpTextU->GetValue().ToDouble(&prpu);
+    prpTextV->GetValue().ToDouble(&prpv);
+    prpTextN->GetValue().ToDouble(&prpn);
 
-    textTheta->GetValue().ToInt(&theta);
-    textPhi->GetValue().ToInt(&phi);
-    textDelta->GetValue().ToInt(&delta);
+    textTheta->GetValue().ToDouble(&theta);
+    textPhi->GetValue().ToDouble(&phi);
+    textDelta->GetValue().ToDouble(&delta);
 
-    textCU->GetValue().ToInt(&cu);
-    textCV->GetValue().ToInt(&cv);
+    textCU->GetValue().ToDouble(&cu);
+    textCV->GetValue().ToDouble(&cv);
 
-    Refresh();
+    rp1->o3d_project->setParameter(
+        projType,
+        vrpx, vrpy, vrpz,
+        prpu, prpv, prpn,
+        theta, phi, delta,
+        cu, cv
+    );
+    rp2->o3d_layout->setParameter(
+        projType,
+        vrpx, vrpy, vrpz,
+        prpu, prpv, prpn,
+        theta, phi, delta,
+        cu, cv
+    );
+
+    this->Refresh();
+    rp1->Refresh();
+    rp2->Refresh();
 }

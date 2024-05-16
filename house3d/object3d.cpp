@@ -1,30 +1,12 @@
-//object3d.cpp
 
 #include "object3d.h"
+#include <wx/dcgraph.h>
+#include <wx/graphics.h>
 
-object3d::object3d(int t, 
-        double x, double y, double z,
-        double u, double v, double n,
-        double th, double ph, double dl,
-        double cw, double cv
-)
+object3d::object3d()
+:nProjectionType(0)
 {
     int i, j;
-
-    //初始化投影参数
-    nProjectionType = t;
-    VRP[0] = x;
-    VRP[1] = y;
-    VRP[2] = z;
-    PRP[0] = u;
-    PRP[1] = v;
-    PRP[2] = n;
-    Theta = th;
-    Phi = ph;
-    Delta = dl;
-    CW[0] = cw;
-    CW[1] = cv;
-
     //////////////////////////////////////////////////////////////////
     //初始化房屋数据
     wcHouse[0][0] = 20.0; wcHouse[0][1] = 0.0; wcHouse[0][2] = 0.0;
@@ -73,42 +55,46 @@ object3d::object3d(int t,
     lPRP[0] = 3000.0;
     lPRP[1] = 1000.0;
     lPRP[2] = 6000.0;
+
+    //初始化投影参数
+    VRP[0] = 0;
+    VRP[1] = 0;
+    VRP[2] = 0;
+    Theta = 0;
+    Phi = 0;
+    Delta = 0;
+    PRP[0] = 250.0;
+    PRP[1] = 100.0;
+    PRP[2] = 250.0;
+    CW[0] = 0.0;
+    CW[1] = 0.0;
 }
 
-void object3d::setProjectionType(int n)
+//重置房屋的投影参数
+void object3d::setParameter(
+        int t, 
+        double x, double y, double z,
+        double u, double v, double n,
+        double th, double ph, double dl,
+        double cw, double cv
+)
 {
-    nProjectionType = n;
-}
-
-void object3d::setVRP(double vrp0, double vrp1, double vrp2)
-{
-    VRP[0] = vrp0;
-    VRP[1] = vrp1;
-    VRP[2] = vrp2;
-}
-
-void object3d::setAngle(double th, double ph, double dt)
-{
+    nProjectionType = t;
+    VRP[0] = x;
+    VRP[1] = y;
+    VRP[2] = z;
     Theta = th;
     Phi = ph;
-    Delta = dt;
-}
-
-void object3d::setPRP(double prp0, double prp1, double prp2)
-{
-    PRP[0] = prp0;
-    PRP[1] = prp1;
-    PRP[2] = prp2;
-}
-
-void object3d::setCW(double cw0, double cw1)
-{
-    CW[0] = cw0;
-    CW[1] = cw1;
+    Delta = dl;
+    PRP[0] = u;
+    PRP[1] = v;
+    PRP[2] = n;
+    CW[0] = cw;
+    CW[1] = cv;
 }
 
 //显示布局图，供layoutWidget调用
-void object3d::ShowLayout(wxPaintDC* pdc)
+void object3d::ShowLayout(wxGraphicsContext* pt)
 {
     int i, j;
     //计算投影参考点的世界坐标
@@ -140,33 +126,37 @@ void object3d::ShowLayout(wxPaintDC* pdc)
     ToScreen(lscPRP, 2); //投影参考点
         //////////////////////////////////////////////////////////////////////////////////
         //显示图形
-    DrawHouse(pdc);//画房屋
+    DrawHouse(pt);//画房屋
         //画世界坐标系
-    for (i = 0; i<3; i++)
-        pdc->DrawLine(wxPoint(lscWC[3][0], lscWC[3][1]), wxPoint(lscWC[i][0], lscWC[i][1]));
+    
+    // 设置画笔  
+    pt->SetPen(wxPen(wxColor(255, 0, 0), 1));
 
-    pdc->DrawText("x", wxPoint(lscWC[1][0], lscWC[1][1]));
-    pdc->DrawText("y", wxPoint(lscWC[1][0], lscWC[1][1]));
-    pdc->DrawText("z", wxPoint(lscWC[2][0], lscWC[2][1]));
+    for (i = 0; i<3; i++)
+        pt->StrokeLine(lscWC[3][0], lscWC[3][1], lscWC[i][0], lscWC[i][1]);
+
+    wxFont font(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Arial"); 
+    pt->SetFont(font, wxColor(255,0, 0));
+    pt->DrawText("x:", lscWC[0][0], lscWC[0][1]);
+    pt->DrawText("y:", lscWC[1][0], lscWC[1][1]);
+    pt->DrawText("z:", lscWC[2][0], lscWC[2][1]);
 
     //画视图参考坐标系
-    pdc->SetPen(wxPen( wxT("#ff0000")));
     for (i = 0; i<3; i++)
-        pdc->DrawLine(wxPoint(lscVRC[i][0], lscVRC[i][1]), wxPoint(lscVRC[3][0], lscVRC[3][1]));
-    pdc->DrawText("u", lscVRC[0][0], lscVRC[0][1]);
-    pdc->DrawText("v", lscVRC[1][0], lscVRC[1][1]);
-    pdc->DrawText("n", lscVRC[2][0], lscVRC[2][1]);
+        pt->StrokeLine(lscVRC[i][0], lscVRC[i][1], lscVRC[3][0], lscVRC[3][1]);
+    pt->DrawText("u:", lscVRC[0][0], lscVRC[0][1]);
+    pt->DrawText("v:", lscVRC[1][0], lscVRC[1][1]);
+    pt->DrawText("n:", lscVRC[2][0], lscVRC[2][1]);
 
     //画投影参考点
-    pdc->SetPen(wxPen( wxT("#0000ff")));
-    pdc->DrawEllipse(lscPRP[0][0] - 3, lscPRP[0][1] - 3, 6, 6);
-    pdc->DrawLine(wxPoint(lscPRP[0][0], lscPRP[0][1]), wxPoint(lscPRP[1][0], lscPRP[1][1]));
-    pdc->DrawText("PRP", lscPRP[0][0], lscPRP[0][1]);
+    pt->SetPen(wxPen(wxColor(0, 0, 255), 1));
+    pt->DrawEllipse(lscPRP[0][0] - 3, lscPRP[0][1] - 3, 6, 6);
+    pt->StrokeLine(lscPRP[0][0], lscPRP[0][1], lscPRP[1][0], lscPRP[1][1]);
+    pt->DrawText("PRP", lscPRP[0][0], lscPRP[0][1]);
 }
 
-
 //显示投影图，供projectionWidget调用
-void object3d::ShowProjection(wxPaintDC* pdc)
+void object3d::ShowProjection(wxGraphicsContext* pt)
 {
     //三维变换
     GenerateMatricTransform(-VRP[0], -VRP[1], -VRP[2], -Theta, -Phi, -Delta, MT);
@@ -177,7 +167,29 @@ void object3d::ShowProjection(wxPaintDC* pdc)
     //屏幕变换
     ToScreen(scHouse, 14);
     //显示图形
-    DrawHouse(pdc);
+    DrawHouse(pt);
+}
+
+//绘制房子
+void object3d::DrawHouse(wxGraphicsContext* pt)
+{
+    int i;
+
+    pt->SetPen(wxPen(wxColor(0, 0, 0), 1));
+
+    //画左侧墙壁
+    for (i = 0; i<5; i++)
+        pt->StrokeLine(scHouse[i][0], scHouse[i][1], scHouse[(i + 1) % 5][0], scHouse[(i + 1) % 5][1]);
+    //画右侧墙壁
+    for (i = 7; i<11; i++)
+        pt->StrokeLine(scHouse[i][0], scHouse[i][1], scHouse[i + 1][0], scHouse[i + 1][1]);
+    pt->StrokeLine(scHouse[i][0], scHouse[i][1], scHouse[7][0], scHouse[7][1]);
+    //画横梁
+    for (i = 0; i<6; i++)
+        pt->StrokeLine(scHouse[i][0], scHouse[i][1], scHouse[i + 7][0], scHouse[i + 7][1]);
+    //画门
+    pt->StrokeLine(scHouse[5][0], scHouse[5][1], scHouse[6][0], scHouse[6][1]);
+    pt->StrokeLine(scHouse[12][0], scHouse[12][1], scHouse[13][0], scHouse[13][1]);
 }
 
 //三维变换
@@ -325,23 +337,3 @@ void object3d::GenerateMatricProject(double PRP[3], double MP[4][4], int nType)
     }
 }
 
-//绘制房子
-void object3d::DrawHouse(wxPaintDC* pdc)
-{
-    int i;
-    int dx = 52;
-    int dy = 102;
-    //画左侧墙壁
-    for (i = 0; i<5; i++)
-        pdc->DrawLine(wxPoint(scHouse[i][0]+dx, scHouse[i][1]+dy), wxPoint(scHouse[(i + 1) % 5][0]+dx, scHouse[(i + 1) % 5][1]+dy));
-    //画右侧墙壁
-    for (i = 7; i<11; i++)
-        pdc->DrawLine(wxPoint(scHouse[i][0]+dx, scHouse[i][1]+dy), wxPoint(scHouse[i + 1][0]+dx, scHouse[i + 1][1]+dy));
-    pdc->DrawLine(wxPoint(scHouse[i][0]+dx, scHouse[i][1]+dy), wxPoint(scHouse[7][0]+dx, scHouse[7][1]+dy));
-    //画横梁
-    for (i = 0; i<6; i++)
-        pdc->DrawLine(wxPoint(scHouse[i][0]+dx, scHouse[i][1]+dy), wxPoint(scHouse[i + 7][0]+dx, scHouse[i + 7][1]+dy));
-    //画门
-    pdc->DrawLine(wxPoint(scHouse[5][0]+dx, scHouse[5][1]+dy), wxPoint(scHouse[6][0]+dx, scHouse[6][1]+dy));
-    pdc->DrawLine(wxPoint(scHouse[12][0]+dx, scHouse[12][1]+dy), wxPoint(scHouse[13][0]+dx, scHouse[13][1]+dy));
-}

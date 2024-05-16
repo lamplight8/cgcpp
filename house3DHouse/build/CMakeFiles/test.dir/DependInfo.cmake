@@ -11,8 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/yj2024/cgcpp/house3DHouse/house3dFrame.cpp" "CMakeFiles/test.dir/house3dFrame.cpp.obj" "gcc" "CMakeFiles/test.dir/house3dFrame.cpp.obj.d"
   "C:/yj2024/cgcpp/house3DHouse/main.cpp" "CMakeFiles/test.dir/main.cpp.obj" "gcc" "CMakeFiles/test.dir/main.cpp.obj.d"
   "C:/yj2024/cgcpp/house3DHouse/object3d.cpp" "CMakeFiles/test.dir/object3d.cpp.obj" "gcc" "CMakeFiles/test.dir/object3d.cpp.obj.d"
-  "C:/yj2024/cgcpp/house3DHouse/rightLaytPanel.cpp" "CMakeFiles/test.dir/rightLaytPanel.cpp.obj" "gcc" "CMakeFiles/test.dir/rightLaytPanel.cpp.obj.d"
-  "C:/yj2024/cgcpp/house3DHouse/rightProjPanel.cpp" "CMakeFiles/test.dir/rightProjPanel.cpp.obj" "gcc" "CMakeFiles/test.dir/rightProjPanel.cpp.obj.d"
+  "C:/yj2024/cgcpp/house3DHouse/rightPanel.cpp" "CMakeFiles/test.dir/rightPanel.cpp.obj" "gcc" "CMakeFiles/test.dir/rightPanel.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

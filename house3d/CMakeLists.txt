@@ -16,12 +16,10 @@ link_directories("C:\\wxWidgets\\lib\\gcc_dll")
 set(PROJECT_SOURCES
     main.h
     main.cpp
-    proInfo.h
-    ctrlPanel.h
-    panels.h
-    panels.cpp
     house3dFrame.h
     house3dFrame.cpp
+    rightPanel.h
+    rightPanel.cpp
     object3d.h
     object3d.cpp
 )
