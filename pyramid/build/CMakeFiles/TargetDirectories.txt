@@ -1,3 +1,0 @@
-C:/yj2024/cgcpp/pyramid/build/CMakeFiles/test.dir
-C:/yj2024/cgcpp/pyramid/build/CMakeFiles/edit_cache.dir
-C:/yj2024/cgcpp/pyramid/build/CMakeFiles/rebuild_cache.dir

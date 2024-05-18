@@ -7,12 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIREDON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(
-    "D:\\wxWidgets\\include",
-    "D:\\wxWidgets\\lib\\gcc_dll",
-    "D:\\wxWidgets\\lib\\gcc_dll\\mswu"
+    "D:\\glfw-3.4.bin.WIN64\\include\\GLFW"
 )
-link_directories("D:\\wxWidgets\\lib\\gcc_dll")
-link_directories("D:\\Windows Kits\\10\\Lib\\10.0.22621.0\\um\\x64")
+
+link_directories("D:\\glfw-3.4.bin.WIN64\\lib-mingw-w64")
 
 set(PROJECT_SOURCES
     main.cpp
@@ -20,6 +18,5 @@ set(PROJECT_SOURCES
 
 add_executable(test  ${PROJECT_SOURCES})
 
-target_link_libraries(test wxbase32u)
-target_link_libraries(test wxmsw32u_core)
+target_link_libraries(test glfw3)
 target_link_libraries(test opengl32)
