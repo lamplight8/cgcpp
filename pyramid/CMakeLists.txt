@@ -6,20 +6,26 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIREDON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-include_directories(
-    "D:\\wxWidgets\\include",
-    "D:\\wxWidgets\\lib\\gcc_dll",
-    "D:\\wxWidgets\\lib\\gcc_dll\\mswu"
-)
-link_directories("D:\\wxWidgets\\lib\\gcc_dll")
-link_directories("D:\\Windows Kits\\10\\Lib\\10.0.22621.0\\um\\x64")
-
 set(PROJECT_SOURCES
+    main.h
     main.cpp
+    pyramidFrame.h
+    pyramidFrame.cpp
+    pyramidCavans.h
+    pyramidCavans.cpp
 )
 
-add_executable(test  ${PROJECT_SOURCES})
+include_directories(
+    "D:\\wxWidgets324\\include",
+    "D:\\wxWidgets324\\lib\\gcc_dll",
+    "D:\\wxWidgets324\\lib\\gcc_dll\\mswu"
+)
+    
+link_directories("D:\\wxWidgets324\\lib\\gcc_dll")
 
+add_executable(test ${PROJECT_SOURCES})
 target_link_libraries(test wxbase32u)
 target_link_libraries(test wxmsw32u_core)
+target_link_libraries(test wxmsw32u_gl_gcc_custom)
 target_link_libraries(test opengl32)
+target_link_libraries(test glu32)

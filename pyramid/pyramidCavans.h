@@ -1,10 +1,9 @@
 //pyramidCavans.h
 #include <wx/wx.h>
 #include <wx/glcanvas.h>
+#include <wx/window.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-//#include <GL/glut.h>
-//#define wxUSE_GLCANVAS 1
 
 class pyramidGLCanvas : public wxGLCanvas
 {
@@ -14,7 +13,6 @@ public:
 
     void OnPaint(wxPaintEvent& event);
     void OnSize(wxSizeEvent& event);
-private:
-    DECLARE_EVENT_TABLE()    
+
 };
 

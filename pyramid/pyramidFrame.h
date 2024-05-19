@@ -1,8 +1,5 @@
 //pyramidFrame.h
-#include <wx/wx.h>
-#include <wx/glcanvas.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include "pyramidCavans.h"
 
 const int Width { 800 };
 const int Height { 600 };

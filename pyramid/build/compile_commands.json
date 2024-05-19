@@ -1,0 +1,20 @@
+[
+{
+  "directory": "D:/yj2024/cgcpp/pyramid/build",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\test.dir\\main.cpp.obj -c D:\\yj2024\\cgcpp\\pyramid\\main.cpp",
+  "file": "D:/yj2024/cgcpp/pyramid/main.cpp",
+  "output": "CMakeFiles/test.dir/main.cpp.obj"
+},
+{
+  "directory": "D:/yj2024/cgcpp/pyramid/build",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\test.dir\\pyramidFrame.cpp.obj -c D:\\yj2024\\cgcpp\\pyramid\\pyramidFrame.cpp",
+  "file": "D:/yj2024/cgcpp/pyramid/pyramidFrame.cpp",
+  "output": "CMakeFiles/test.dir/pyramidFrame.cpp.obj"
+},
+{
+  "directory": "D:/yj2024/cgcpp/pyramid/build",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++20 -o CMakeFiles\\test.dir\\pyramidCavans.cpp.obj -c D:\\yj2024\\cgcpp\\pyramid\\pyramidCavans.cpp",
+  "file": "D:/yj2024/cgcpp/pyramid/pyramidCavans.cpp",
+  "output": "CMakeFiles/test.dir/pyramidCavans.cpp.obj"
+}
+]

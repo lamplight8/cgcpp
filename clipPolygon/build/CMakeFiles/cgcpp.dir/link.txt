@@ -1,0 +1,3 @@
+D:\msys64\mingw64\bin\cmake.exe -E rm -f CMakeFiles\cgcpp.dir/objects.a
+D:\msys64\mingw64\bin\ar.exe qc CMakeFiles\cgcpp.dir/objects.a @CMakeFiles\cgcpp.dir\objects1.rsp
+D:\msys64\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\cgcpp.dir/objects.a -Wl,--no-whole-archive -o cgcpp.exe -Wl,--out-implib,libcgcpp.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cgcpp.dir\linkLibs.rsp

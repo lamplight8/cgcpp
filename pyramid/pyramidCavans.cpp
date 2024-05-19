@@ -2,7 +2,7 @@
 #include "pyramidCavans.h"
 
 pyramidGLCanvas::pyramidGLCanvas(wxWindow* parent)
-:wxGLCanvas(parent, wxID_ANY, 0, wxDefaultPosition, wxDefaultSize, 0, wxT("GLCanvas"), wxNullPalette)
+:wxGLCanvas(parent, wxID_ANY, 0, wxDefaultPosition, wxDefaultSize, 0, wxT("GLCanvas"))
 {
     Connect(wxEVT_PAINT, wxPaintEventHandler(pyramidGLCanvas::OnPaint));
     Connect(wxEVT_SIZE, wxSizeEventHandler(pyramidGLCanvas::OnSize));

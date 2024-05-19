@@ -1,4 +1,4 @@
-/*
+
 //main.cpp
 #include "main.h"
 #include "pyramidFrame.h"
@@ -11,8 +11,8 @@ bool MyApp::OnInit()
     dl->Show(true);
     return true;
 }
-*/
 
+/*
 #include <iostream>
 #include <string>
 #include <cassert>
@@ -133,3 +133,102 @@ int main()
 
     wxEntry();
 }
+
+#include <wx/wx.h>
+#include <wx/glcanvas.h>
+
+class MyGLCanvas : public wxGLCanvas
+{
+public:
+    MyGLCanvas(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = wxGLCanvasName, const int* attribList = 0, const wxPalette& palette = wxNullPalette);
+    ~MyGLCanvas();
+
+    void OnPaint(wxPaintEvent& event);
+    void OnSize(wxSizeEvent& event);
+
+private:
+    DECLARE_EVENT_TABLE()
+};
+
+class MyGLCanvas : public wxGLCanvas
+{
+public:
+    MyGLCanvas(wxWindow *parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = 0, const wxString& name = wxGLCanvasName, const int* attribList = 0, const wxPalette& palette = wxNullPalette);
+    ~MyGLCanvas();
+
+    void OnPaint(wxPaintEvent& event);
+    void OnSize(wxSizeEvent& event);
+
+private:
+    DECLARE_EVENT_TABLE()
+};
+
+MyGLCanvas::MyGLCanvas(wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name, const int* attribList, const wxPalette& palette)
+:wxGLCanvas(parent, id, pos, size, style, name, attribList, palette)//这里显示wxGLCanvas错误
+{
+    Connect(wxEVT_PAINT, wxPaintEventHandler(MyGLCanvas::OnPaint));
+    Connect(wxEVT_SIZE, wxSizeEventHandler(MyGLCanvas::OnSize));
+}
+
+MyGLCanvas::~MyGLCanvas()
+{
+}
+
+void MyGLCanvas::OnPaint(wxPaintEvent& event)
+{
+    wxPaintDC dc(this);
+
+    // Initialize OpenGL rendering context
+    wxGLContext* context = GetContext();
+    context->SetCurrent(*this);
+
+    // Clear the color buffer
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Draw your scene here
+
+    // Swap the front and back buffers
+    SwapBuffers();
+}
+
+void MyGLCanvas::OnSize(wxSizeEvent& event)
+{
+    // Set the viewport and projection matrix for OpenGL rendering
+    wxGLContext* context = GetContext();
+    context->SetCurrent(*this);
+
+    int w, h;
+    GetClientSize(&w, &h);
+
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45.0, (GLfloat)w / (GLfloat)h, 1.0, 100.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+
+BEGIN_EVENT_TABLE(MyGLCanvas, wxGLCanvas)
+    EVT_PAINT(MyGLCanvas::OnPaint)
+    EVT_SIZE(MyGLCanvas::OnSize)
+END_EVENT_TABLE()
+
+class MyApp : public wxApp
+{
+public:
+    virtual bool OnInit();
+};
+
+bool MyApp::OnInit()
+{
+    wxFrame* frame = new wxFrame(NULL, wxID_ANY, wxT("OpenGL Example"), wxDefaultPosition, wxSize(640, 480));
+    MyGLCanvas* canvas = new MyGLCanvas(frame);
+
+    frame->Show(true);
+
+    return true;
+}
+
+wxIMPLEMENT_APP(MyApp);
+*/

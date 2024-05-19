@@ -7,11 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIREDON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(
-    "C:\\wxWidgets\\include",
-    "C:\\wxWidgets\\lib\\gcc_dll",
-    "C:\\wxWidgets\\lib\\gcc_dll\\mswu"
+    "D:\\wxWidgets\\include",
+    "D:\\wxWidgets\\lib\\gcc_dll",
+    "D:\\wxWidgets\\lib\\gcc_dll\\mswu"
 )
-link_directories("C:\\wxWidgets\\lib\\gcc_dll")
+link_directories("D:\\wxWidgets\\lib\\gcc_dll")
 
 set(PROJECT_SOURCES
     main.h
@@ -28,3 +28,4 @@ add_executable(test  ${PROJECT_SOURCES})
 
 target_link_libraries(test wxbase32u)
 target_link_libraries(test wxmsw32u_core)
+#target_link_libraries(test wxmsw32u_core_gcc_custom)
