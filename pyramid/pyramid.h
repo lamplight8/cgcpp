@@ -20,23 +20,16 @@ class MyFrame : public wxFrame
 public:
     MyFrame(const wxString& title);
 
-    void OnAbout(wxCommandEvent& event);
-    void OnQuit(wxCommandEvent& event);
-#if wxUSE_LOGWINDOW
-    void OnLogWindow(wxCommandEvent& event);
-#endif // wxUSE_LOGWINDOW
     void SetOGLString(const wxString& ogls)
-        { m_OGLString = ogls; }
+    { 
+        m_OGLString = ogls; 
+    }
+
     bool OGLAvailable();
 
 private:
-#if wxUSE_LOGWINDOW
-    wxLogWindow* m_LogWin;
-#endif // wxUSE_LOGWINDOW
     wxString     m_OGLString;
     MyGLCanvas*  m_mycanvas;
-
-    wxDECLARE_EVENT_TABLE();
 };
 
 class MyGLCanvas : public wxGLCanvas
@@ -65,13 +58,4 @@ private:
 
     wxDECLARE_EVENT_TABLE();
 };
-
-// IDs for the controls and the menu commands
-enum
-{
-    Pyramid_Quit = wxID_EXIT,
-    Pyramid_About = wxID_ABOUT,
-    Pyramid_LogW = wxID_HIGHEST + 10
-};
-
 

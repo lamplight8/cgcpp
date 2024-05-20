@@ -1,17 +1,11 @@
 //pyramid.cpp
 #include "pyramid.h"
+#include <iostream>
+using namespace std;
 
 #ifndef wxHAS_IMAGES_IN_RESOURCES
-    #include "sample.xpm"
+    #include "../sample.xpm"
 #endif
-
-wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
-    EVT_MENU(Pyramid_Quit,  MyFrame::OnQuit)
-    EVT_MENU(Pyramid_About, MyFrame::OnAbout)
-#if wxUSE_LOGWINDOW
-    EVT_MENU(Pyramid_LogW,  MyFrame::OnLogWindow)
-#endif // wxUSE_LOGWINDOW
-wxEND_EVENT_TABLE()
 
 wxIMPLEMENT_APP(MyApp);
 
@@ -35,35 +29,6 @@ MyFrame::MyFrame(const wxString& title)
 {
     SetIcon(wxICON(sample));
 
-#if wxUSE_MENUS
-    wxMenu *fileMenu = new wxMenu;
-
-    wxMenu *helpMenu = new wxMenu;
-    helpMenu->Append(Pyramid_About, "&About\tF1", "Show about dialog");
-
-#if wxUSE_LOGWINDOW
-    fileMenu->Append(Pyramid_LogW, "&Log window", "Open the log window");
-    fileMenu->AppendSeparator();
-#endif // wxUSE_LOGWINDOW
-    fileMenu->Append(Pyramid_Quit, "E&xit\tAlt-X", "Quit this program");
-
-    wxMenuBar *menuBar = new wxMenuBar();
-    menuBar->Append(fileMenu, "&File");
-    menuBar->Append(helpMenu, "&Help");
-
-    SetMenuBar(menuBar);
-#endif // wxUSE_MENUS
-
-#if wxUSE_STATUSBAR
-    CreateStatusBar(2);
-    SetStatusText("Welcome to wxWidgets!");
-#endif // wxUSE_STATUSBAR
-
-#if wxUSE_LOGWINDOW
-    m_LogWin = new wxLogWindow(NULL, "Pyramid log window", false, false);
-    wxLog::SetActiveTarget(m_LogWin);
-#endif // wxUSE_LOGWINDOW
-
     // The canvas
     m_mycanvas = NULL;
     wxGLAttributes vAttrs;//OpenGL渲染上下文属性
@@ -74,15 +39,6 @@ MyFrame::MyFrame(const wxString& title)
 
     if ( accepted )
     {
-#if wxUSE_LOGWINDOW
-        wxLogMessage("The display supports required visual attributes.");
-#endif // wxUSE_LOGWINDOW
-    }
-    else
-    {
-#if wxUSE_LOGWINDOW
-        wxLogMessage("First try with OpenGL default visual attributes failed.");
-#endif // wxUSE_LOGWINDOW
         // Try again without sample buffers
         vAttrs.Reset();
         vAttrs.PlatformDefaults().RGBA().DoubleBuffer().Depth(16).EndList();
@@ -93,12 +49,6 @@ MyFrame::MyFrame(const wxString& title)
             wxMessageBox("Visual attributes for OpenGL are not accepted.\nThe app will exit now.",
                          "Error with OpenGL", wxOK | wxICON_ERROR);
         }
-        else
-        {
-#if wxUSE_LOGWINDOW
-            wxLogMessage("Second try with other visual attributes worked.");
-#endif // wxUSE_LOGWINDOW
-        }
     }
 
     if ( accepted )
@@ -106,40 +56,6 @@ MyFrame::MyFrame(const wxString& title)
 
     SetMinSize(wxSize(250, 200));
 }
-
-void MyFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
-{
-    Close(true);
-}
-
-void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
-{
-    wxMessageBox(wxString::Format
-                 (
-                    "Welcome to %s!\n"
-                    "\n"
-                    "This is the wxWidgets OpenGL Pyramid sample.\n"
-                    "%s\n",
-                    wxVERSION_STRING,
-                    m_OGLString
-                 ),
-                 "About wxWidgets pyramid sample",
-                 wxOK | wxICON_INFORMATION,
-                 this);
-}
-
-#if wxUSE_LOGWINDOW
-void MyFrame::OnLogWindow(wxCommandEvent& WXUNUSED(event))
-{
-    if ( m_LogWin->GetFrame()->IsIconized() )
-        m_LogWin->GetFrame()->Restore();
-
-    if ( ! m_LogWin->GetFrame()->IsShown() )
-        m_LogWin->Show();
-
-    m_LogWin->GetFrame()->SetFocus();
-}
-#endif // wxUSE_LOGWINDOW
 
 bool MyFrame::OGLAvailable()
 {
@@ -154,54 +70,7 @@ bool MyFrame::OGLAvailable()
 // ----------------------------------------------------------------------------
 void fOGLErrHandler(int err, int glerr, const GLchar* glMsg)
 {
-#if wxUSE_LOGWINDOW
-    wxString msg;
-
-    switch (err)
-    {
-    case myoglERR_SHADERCREATE:
-        msg = _("Error in shader creation.");
-        break;
-    case myoglERR_SHADERCOMPILE:
-        msg = _("Error in shader compilation.");
-        break;
-    case myoglERR_SHADERLINK:
-        msg = _("Error in shader linkage.");
-        break;
-    case myoglERR_SHADERLOCATION:
-        msg = _("Error: Can't get uniforms locations.");
-        break;
-    case myoglERR_BUFFER:
-        msg = _("Error: Can't load buffer. Likely out of GPU memory.");
-        break;
-    case myoglERR_TEXTIMAGE:
-        msg = _("Error: Can't load texture. Likely out of GPU memory.");
-        break;
-    case myoglERR_DRAWING_TRI:
-        msg = _("Error: Can't draw the triangles.");
-        break;
-    case myoglERR_DRAWING_STR:
-        msg = _("Error: Can't draw the string.");
-        break;
-    case myoglERR_JUSTLOG:
-        msg = _("Log info: ");
-        break;
-    default:
-        msg = _("Not a GL message.");
-    }
-
-    if ( glerr != GL_NO_ERROR )
-        msg += wxString::Format(_(" GL error %d. "), glerr);
-    else if ( err == 0 )
-        msg = _("Information: ");
-    else if ( err != myoglERR_JUSTLOG )
-        msg += _(" GL reports: ");
-
-    if ( glMsg != NULL )
-        msg += wxString::FromUTF8( reinterpret_cast<const char *>(glMsg) );
-
-    wxLogMessage(msg);
-#endif // wxUSE_LOGWINDOW
+    //
 }
 
 // ----------------------------------------------------------------------------
@@ -316,39 +185,8 @@ MyGLCanvas::MyGLCanvas(MyFrame* parent, const wxGLAttributes& canvasAttrs)
 
     // Explicitly create a new rendering context instance for this canvas.
     wxGLContextAttrs ctxAttrs;
-#ifndef __WXMAC__
-    // An impossible context, just to test IsOk()
-    ctxAttrs.PlatformDefaults().OGLVersion(99, 2).EndList();
+    ctxAttrs.PlatformDefaults().CoreProfile().OGLVersion(3, 2).EndList();
     m_oglContext = new wxGLContext(this, NULL, &ctxAttrs);
-
-    if ( !m_oglContext->IsOK() )
-    {
-#if wxUSE_LOGWINDOW
-        wxLogMessage("Trying to set OpenGL 99.2 failed, as expected.");
-#endif // wxUSE_LOGWINDOW
-        delete m_oglContext;
-        ctxAttrs.Reset();
-#endif //__WXMAC__
-        ctxAttrs.PlatformDefaults().CoreProfile().OGLVersion(3, 2).EndList();
-        m_oglContext = new wxGLContext(this, NULL, &ctxAttrs);
-#ifndef __WXMAC__
-    }
-#endif //__WXMAC__
-
-    if ( !m_oglContext->IsOK() )
-    {
-        wxMessageBox("This sample needs an OpenGL 3.2 capable driver.\nThe app will end now.",
-                     "OpenGL version error", wxOK | wxICON_INFORMATION, this);
-        delete m_oglContext;
-        m_oglContext = NULL;
-    }
-    else
-    {
-#if wxUSE_LOGWINDOW
-        wxLogMessage("OpenGL Core Profile 3.2 successfully set.");
-#endif // wxUSE_LOGWINDOW
-    }
-
 }
 
 MyGLCanvas::~MyGLCanvas()
