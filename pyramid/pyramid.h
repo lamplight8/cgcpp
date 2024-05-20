@@ -1,3 +1,4 @@
+//pyramid.h
 #include <wx/wx.h>
 #include "oglstuff.h"
 #include <wx/glcanvas.h>

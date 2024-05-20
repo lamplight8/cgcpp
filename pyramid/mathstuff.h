@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        mathstuff.h
-// Purpose:     Some maths used for pyramid sample
-// Author:      Manuel Martin
-// Created:     2015/01/31
-// Copyright:   (c) 2015 Manuel Martin
-// Licence:     wxWindows licence
-/////////////////////////////////////////////////////////////////////////////
+// mathstuff.h
 
 #ifndef MATHSTUFF_H
   #define MATHSTUFF_H

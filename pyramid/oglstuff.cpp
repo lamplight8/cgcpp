@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        oglstuff.cpp
-// Purpose:     OpenGL manager for pyramid sample
-// Author:      Manuel Martin
-// Created:     2015/01/31
-// Copyright:   (c) 2015 Manuel Martin
-// Licence:     wxWindows licence
-/////////////////////////////////////////////////////////////////////////////
+// oglstuff.cpp
 
 #include <cmath>
 

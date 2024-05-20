@@ -1,3 +1,4 @@
+//pyramid.cpp
 #include "pyramid.h"
 
 #ifndef wxHAS_IMAGES_IN_RESOURCES

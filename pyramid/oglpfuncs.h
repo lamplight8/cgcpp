@@ -1,11 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        oglpfuncs.h
-// Purpose:     Types, constants, and pointers to OpenGL functions
-// Author:      Manuel Martin
-// Created:     2015/11/16
-// Copyright:   (c) 2015 Manuel Martin
-// Licence:     wxWindows licence
-/////////////////////////////////////////////////////////////////////////////
+// oglpfuncs.h
 
 #ifndef OGLPFUNCS_H
 #define OGLPFUNCS_H
