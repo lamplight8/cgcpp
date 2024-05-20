@@ -68,68 +68,85 @@ include CMakeFiles/test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test.dir/flags.make
 
-CMakeFiles/test.dir/main.cpp.obj: CMakeFiles/test.dir/flags.make
-CMakeFiles/test.dir/main.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
-CMakeFiles/test.dir/main.cpp.obj: D:/yj2024/cgcpp/pyramid/main.cpp
-CMakeFiles/test.dir/main.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.dir/main.cpp.obj"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/main.cpp.obj -MF CMakeFiles\test.dir\main.cpp.obj.d -o CMakeFiles\test.dir\main.cpp.obj -c D:\yj2024\cgcpp\pyramid\main.cpp
+CMakeFiles/test.dir/mathstuff.cpp.obj: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/mathstuff.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
+CMakeFiles/test.dir/mathstuff.cpp.obj: D:/yj2024/cgcpp/pyramid/mathstuff.cpp
+CMakeFiles/test.dir/mathstuff.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.dir/mathstuff.cpp.obj"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/mathstuff.cpp.obj -MF CMakeFiles\test.dir\mathstuff.cpp.obj.d -o CMakeFiles\test.dir\mathstuff.cpp.obj -c D:\yj2024\cgcpp\pyramid\mathstuff.cpp
 
-CMakeFiles/test.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/main.cpp.i"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\yj2024\cgcpp\pyramid\main.cpp > CMakeFiles\test.dir\main.cpp.i
+CMakeFiles/test.dir/mathstuff.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/mathstuff.cpp.i"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\yj2024\cgcpp\pyramid\mathstuff.cpp > CMakeFiles\test.dir\mathstuff.cpp.i
 
-CMakeFiles/test.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/main.cpp.s"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\yj2024\cgcpp\pyramid\main.cpp -o CMakeFiles\test.dir\main.cpp.s
+CMakeFiles/test.dir/mathstuff.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/mathstuff.cpp.s"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\yj2024\cgcpp\pyramid\mathstuff.cpp -o CMakeFiles\test.dir\mathstuff.cpp.s
 
-CMakeFiles/test.dir/pyramidFrame.cpp.obj: CMakeFiles/test.dir/flags.make
-CMakeFiles/test.dir/pyramidFrame.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
-CMakeFiles/test.dir/pyramidFrame.cpp.obj: D:/yj2024/cgcpp/pyramid/pyramidFrame.cpp
-CMakeFiles/test.dir/pyramidFrame.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test.dir/pyramidFrame.cpp.obj"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/pyramidFrame.cpp.obj -MF CMakeFiles\test.dir\pyramidFrame.cpp.obj.d -o CMakeFiles\test.dir\pyramidFrame.cpp.obj -c D:\yj2024\cgcpp\pyramid\pyramidFrame.cpp
+CMakeFiles/test.dir/oglpfuncs.cpp.obj: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/oglpfuncs.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
+CMakeFiles/test.dir/oglpfuncs.cpp.obj: D:/yj2024/cgcpp/pyramid/oglpfuncs.cpp
+CMakeFiles/test.dir/oglpfuncs.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test.dir/oglpfuncs.cpp.obj"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/oglpfuncs.cpp.obj -MF CMakeFiles\test.dir\oglpfuncs.cpp.obj.d -o CMakeFiles\test.dir\oglpfuncs.cpp.obj -c D:\yj2024\cgcpp\pyramid\oglpfuncs.cpp
 
-CMakeFiles/test.dir/pyramidFrame.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/pyramidFrame.cpp.i"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\yj2024\cgcpp\pyramid\pyramidFrame.cpp > CMakeFiles\test.dir\pyramidFrame.cpp.i
+CMakeFiles/test.dir/oglpfuncs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/oglpfuncs.cpp.i"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\yj2024\cgcpp\pyramid\oglpfuncs.cpp > CMakeFiles\test.dir\oglpfuncs.cpp.i
 
-CMakeFiles/test.dir/pyramidFrame.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/pyramidFrame.cpp.s"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\yj2024\cgcpp\pyramid\pyramidFrame.cpp -o CMakeFiles\test.dir\pyramidFrame.cpp.s
+CMakeFiles/test.dir/oglpfuncs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/oglpfuncs.cpp.s"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\yj2024\cgcpp\pyramid\oglpfuncs.cpp -o CMakeFiles\test.dir\oglpfuncs.cpp.s
 
-CMakeFiles/test.dir/pyramidCavans.cpp.obj: CMakeFiles/test.dir/flags.make
-CMakeFiles/test.dir/pyramidCavans.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
-CMakeFiles/test.dir/pyramidCavans.cpp.obj: D:/yj2024/cgcpp/pyramid/pyramidCavans.cpp
-CMakeFiles/test.dir/pyramidCavans.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/pyramidCavans.cpp.obj"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/pyramidCavans.cpp.obj -MF CMakeFiles\test.dir\pyramidCavans.cpp.obj.d -o CMakeFiles\test.dir\pyramidCavans.cpp.obj -c D:\yj2024\cgcpp\pyramid\pyramidCavans.cpp
+CMakeFiles/test.dir/oglstuff.cpp.obj: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/oglstuff.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
+CMakeFiles/test.dir/oglstuff.cpp.obj: D:/yj2024/cgcpp/pyramid/oglstuff.cpp
+CMakeFiles/test.dir/oglstuff.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/oglstuff.cpp.obj"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/oglstuff.cpp.obj -MF CMakeFiles\test.dir\oglstuff.cpp.obj.d -o CMakeFiles\test.dir\oglstuff.cpp.obj -c D:\yj2024\cgcpp\pyramid\oglstuff.cpp
 
-CMakeFiles/test.dir/pyramidCavans.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/pyramidCavans.cpp.i"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\yj2024\cgcpp\pyramid\pyramidCavans.cpp > CMakeFiles\test.dir\pyramidCavans.cpp.i
+CMakeFiles/test.dir/oglstuff.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/oglstuff.cpp.i"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\yj2024\cgcpp\pyramid\oglstuff.cpp > CMakeFiles\test.dir\oglstuff.cpp.i
 
-CMakeFiles/test.dir/pyramidCavans.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/pyramidCavans.cpp.s"
-	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\yj2024\cgcpp\pyramid\pyramidCavans.cpp -o CMakeFiles\test.dir\pyramidCavans.cpp.s
+CMakeFiles/test.dir/oglstuff.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/oglstuff.cpp.s"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\yj2024\cgcpp\pyramid\oglstuff.cpp -o CMakeFiles\test.dir\oglstuff.cpp.s
+
+CMakeFiles/test.dir/pyramid.cpp.obj: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/pyramid.cpp.obj: CMakeFiles/test.dir/includes_CXX.rsp
+CMakeFiles/test.dir/pyramid.cpp.obj: D:/yj2024/cgcpp/pyramid/pyramid.cpp
+CMakeFiles/test.dir/pyramid.cpp.obj: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.dir/pyramid.cpp.obj"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/pyramid.cpp.obj -MF CMakeFiles\test.dir\pyramid.cpp.obj.d -o CMakeFiles\test.dir\pyramid.cpp.obj -c D:\yj2024\cgcpp\pyramid\pyramid.cpp
+
+CMakeFiles/test.dir/pyramid.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test.dir/pyramid.cpp.i"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\yj2024\cgcpp\pyramid\pyramid.cpp > CMakeFiles\test.dir\pyramid.cpp.i
+
+CMakeFiles/test.dir/pyramid.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test.dir/pyramid.cpp.s"
+	D:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\yj2024\cgcpp\pyramid\pyramid.cpp -o CMakeFiles\test.dir\pyramid.cpp.s
 
 # Object files for target test
 test_OBJECTS = \
-"CMakeFiles/test.dir/main.cpp.obj" \
-"CMakeFiles/test.dir/pyramidFrame.cpp.obj" \
-"CMakeFiles/test.dir/pyramidCavans.cpp.obj"
+"CMakeFiles/test.dir/mathstuff.cpp.obj" \
+"CMakeFiles/test.dir/oglpfuncs.cpp.obj" \
+"CMakeFiles/test.dir/oglstuff.cpp.obj" \
+"CMakeFiles/test.dir/pyramid.cpp.obj"
 
 # External object files for target test
 test_EXTERNAL_OBJECTS =
 
-test.exe: CMakeFiles/test.dir/main.cpp.obj
-test.exe: CMakeFiles/test.dir/pyramidFrame.cpp.obj
-test.exe: CMakeFiles/test.dir/pyramidCavans.cpp.obj
+test.exe: CMakeFiles/test.dir/mathstuff.cpp.obj
+test.exe: CMakeFiles/test.dir/oglpfuncs.cpp.obj
+test.exe: CMakeFiles/test.dir/oglstuff.cpp.obj
+test.exe: CMakeFiles/test.dir/pyramid.cpp.obj
 test.exe: CMakeFiles/test.dir/build.make
 test.exe: CMakeFiles/test.dir/linkLibs.rsp
 test.exe: CMakeFiles/test.dir/objects1.rsp
 test.exe: CMakeFiles/test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable test.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\yj2024\cgcpp\pyramid\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable test.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\test.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

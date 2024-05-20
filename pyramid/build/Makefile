@@ -128,77 +128,101 @@ test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
-main.obj: main.cpp.obj
-.PHONY : main.obj
+mathstuff.obj: mathstuff.cpp.obj
+.PHONY : mathstuff.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+mathstuff.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/mathstuff.cpp.obj
+.PHONY : mathstuff.cpp.obj
 
-main.i: main.cpp.i
-.PHONY : main.i
+mathstuff.i: mathstuff.cpp.i
+.PHONY : mathstuff.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/main.cpp.i
-.PHONY : main.cpp.i
+mathstuff.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/mathstuff.cpp.i
+.PHONY : mathstuff.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+mathstuff.s: mathstuff.cpp.s
+.PHONY : mathstuff.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/main.cpp.s
-.PHONY : main.cpp.s
+mathstuff.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/mathstuff.cpp.s
+.PHONY : mathstuff.cpp.s
 
-pyramidCavans.obj: pyramidCavans.cpp.obj
-.PHONY : pyramidCavans.obj
+oglpfuncs.obj: oglpfuncs.cpp.obj
+.PHONY : oglpfuncs.obj
 
 # target to build an object file
-pyramidCavans.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramidCavans.cpp.obj
-.PHONY : pyramidCavans.cpp.obj
+oglpfuncs.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/oglpfuncs.cpp.obj
+.PHONY : oglpfuncs.cpp.obj
 
-pyramidCavans.i: pyramidCavans.cpp.i
-.PHONY : pyramidCavans.i
+oglpfuncs.i: oglpfuncs.cpp.i
+.PHONY : oglpfuncs.i
 
 # target to preprocess a source file
-pyramidCavans.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramidCavans.cpp.i
-.PHONY : pyramidCavans.cpp.i
+oglpfuncs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/oglpfuncs.cpp.i
+.PHONY : oglpfuncs.cpp.i
 
-pyramidCavans.s: pyramidCavans.cpp.s
-.PHONY : pyramidCavans.s
+oglpfuncs.s: oglpfuncs.cpp.s
+.PHONY : oglpfuncs.s
 
 # target to generate assembly for a file
-pyramidCavans.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramidCavans.cpp.s
-.PHONY : pyramidCavans.cpp.s
+oglpfuncs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/oglpfuncs.cpp.s
+.PHONY : oglpfuncs.cpp.s
 
-pyramidFrame.obj: pyramidFrame.cpp.obj
-.PHONY : pyramidFrame.obj
+oglstuff.obj: oglstuff.cpp.obj
+.PHONY : oglstuff.obj
 
 # target to build an object file
-pyramidFrame.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramidFrame.cpp.obj
-.PHONY : pyramidFrame.cpp.obj
+oglstuff.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/oglstuff.cpp.obj
+.PHONY : oglstuff.cpp.obj
 
-pyramidFrame.i: pyramidFrame.cpp.i
-.PHONY : pyramidFrame.i
+oglstuff.i: oglstuff.cpp.i
+.PHONY : oglstuff.i
 
 # target to preprocess a source file
-pyramidFrame.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramidFrame.cpp.i
-.PHONY : pyramidFrame.cpp.i
+oglstuff.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/oglstuff.cpp.i
+.PHONY : oglstuff.cpp.i
 
-pyramidFrame.s: pyramidFrame.cpp.s
-.PHONY : pyramidFrame.s
+oglstuff.s: oglstuff.cpp.s
+.PHONY : oglstuff.s
 
 # target to generate assembly for a file
-pyramidFrame.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramidFrame.cpp.s
-.PHONY : pyramidFrame.cpp.s
+oglstuff.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/oglstuff.cpp.s
+.PHONY : oglstuff.cpp.s
+
+pyramid.obj: pyramid.cpp.obj
+.PHONY : pyramid.obj
+
+# target to build an object file
+pyramid.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramid.cpp.obj
+.PHONY : pyramid.cpp.obj
+
+pyramid.i: pyramid.cpp.i
+.PHONY : pyramid.i
+
+# target to preprocess a source file
+pyramid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramid.cpp.i
+.PHONY : pyramid.cpp.i
+
+pyramid.s: pyramid.cpp.s
+.PHONY : pyramid.s
+
+# target to generate assembly for a file
+pyramid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test.dir\build.make CMakeFiles/test.dir/pyramid.cpp.s
+.PHONY : pyramid.cpp.s
 
 # Help Target
 help:
@@ -209,15 +233,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... test
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
-	@echo ... pyramidCavans.obj
-	@echo ... pyramidCavans.i
-	@echo ... pyramidCavans.s
-	@echo ... pyramidFrame.obj
-	@echo ... pyramidFrame.i
-	@echo ... pyramidFrame.s
+	@echo ... mathstuff.obj
+	@echo ... mathstuff.i
+	@echo ... mathstuff.s
+	@echo ... oglpfuncs.obj
+	@echo ... oglpfuncs.i
+	@echo ... oglpfuncs.s
+	@echo ... oglstuff.obj
+	@echo ... oglstuff.i
+	@echo ... oglstuff.s
+	@echo ... pyramid.obj
+	@echo ... pyramid.i
+	@echo ... pyramid.s
 .PHONY : help
 
 

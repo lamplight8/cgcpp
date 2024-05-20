@@ -1,7 +1,5 @@
-CMakeFiles/test.dir/pyramidFrame.cpp.obj: \
- D:\yj2024\cgcpp\pyramid\pyramidFrame.cpp \
- D:\yj2024\cgcpp\pyramid\pyramidFrame.h \
- D:\yj2024\cgcpp\pyramid\pyramidCavans.h D:/wxWidgets324/include/wx/wx.h \
+CMakeFiles/test.dir/pyramid.cpp.obj: D:\yj2024\cgcpp\pyramid\pyramid.cpp \
+ D:\yj2024\cgcpp\pyramid\pyramid.h D:/wxWidgets324/include/wx/wx.h \
  D:/wxWidgets324/include/wx/defs.h D:/wxWidgets324/include/wx/platform.h \
  D:/wxWidgets324/include/wx/compiler.h \
  D:/wxWidgets324/lib/gcc_dll/mswu/wx/setup.h \
@@ -622,6 +620,8 @@ CMakeFiles/test.dir/pyramidFrame.cpp.obj: \
  D:/wxWidgets324/include/wx/filedlg.h \
  D:/wxWidgets324/include/wx/msw/filedlg.h \
  D:/wxWidgets324/include/wx/mdi.h D:/wxWidgets324/include/wx/msw/mdi.h \
+ D:\yj2024\cgcpp\pyramid\oglstuff.h D:\yj2024\cgcpp\pyramid\mathstuff.h \
+ D:\yj2024\cgcpp\pyramid\oglpfuncs.h \
  D:/wxWidgets324/include/wx/glcanvas.h \
  D:/wxWidgets324/include/wx/msw/glcanvas.h \
- D:/msys64/mingw64/include/GL/gl.h D:/msys64/mingw64/include/GL/glu.h
+ D:/msys64/mingw64/include/GL/gl.h

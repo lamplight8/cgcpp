@@ -7,12 +7,14 @@ set(CMAKE_CXX_STANDARD_REQUIREDON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(PROJECT_SOURCES
-    main.h
-    main.cpp
-    pyramidFrame.h
-    pyramidFrame.cpp
-    pyramidCavans.h
-    pyramidCavans.cpp
+    mathstuff.h
+    mathstuff.cpp
+    oglpfuncs.h
+    oglpfuncs.cpp
+    oglstuff.h
+    oglstuff.cpp
+    pyramid.h
+    pyramid.cpp
 )
 
 include_directories(

@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/yj2024/cgcpp/pyramid/main.cpp" "CMakeFiles/test.dir/main.cpp.obj" "gcc" "CMakeFiles/test.dir/main.cpp.obj.d"
-  "D:/yj2024/cgcpp/pyramid/pyramidCavans.cpp" "CMakeFiles/test.dir/pyramidCavans.cpp.obj" "gcc" "CMakeFiles/test.dir/pyramidCavans.cpp.obj.d"
-  "D:/yj2024/cgcpp/pyramid/pyramidFrame.cpp" "CMakeFiles/test.dir/pyramidFrame.cpp.obj" "gcc" "CMakeFiles/test.dir/pyramidFrame.cpp.obj.d"
+  "D:/yj2024/cgcpp/pyramid/mathstuff.cpp" "CMakeFiles/test.dir/mathstuff.cpp.obj" "gcc" "CMakeFiles/test.dir/mathstuff.cpp.obj.d"
+  "D:/yj2024/cgcpp/pyramid/oglpfuncs.cpp" "CMakeFiles/test.dir/oglpfuncs.cpp.obj" "gcc" "CMakeFiles/test.dir/oglpfuncs.cpp.obj.d"
+  "D:/yj2024/cgcpp/pyramid/oglstuff.cpp" "CMakeFiles/test.dir/oglstuff.cpp.obj" "gcc" "CMakeFiles/test.dir/oglstuff.cpp.obj.d"
+  "D:/yj2024/cgcpp/pyramid/pyramid.cpp" "CMakeFiles/test.dir/pyramid.cpp.obj" "gcc" "CMakeFiles/test.dir/pyramid.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
