@@ -1,3 +1,0 @@
-D:/yj2024/cgcpp/clipPolygon/build/CMakeFiles/cgcpp.dir
-D:/yj2024/cgcpp/clipPolygon/build/CMakeFiles/edit_cache.dir
-D:/yj2024/cgcpp/clipPolygon/build/CMakeFiles/rebuild_cache.dir
