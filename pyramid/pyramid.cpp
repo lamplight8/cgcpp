@@ -32,24 +32,8 @@ MyFrame::MyFrame(const wxString& title)
     // The canvas
     m_mycanvas = NULL;
     wxGLAttributes vAttrs;//OpenGL渲染上下文属性
-
-    // Defaults should be accepted
     vAttrs.PlatformDefaults().Defaults().EndList();//返回系统默认的属性列表
     bool accepted = wxGLCanvas::IsDisplaySupported(vAttrs);
-
-    if ( accepted )
-    {
-        // Try again without sample buffers
-        vAttrs.Reset();
-        vAttrs.PlatformDefaults().RGBA().DoubleBuffer().Depth(16).EndList();
-        accepted = wxGLCanvas::IsDisplaySupported(vAttrs) ;
-
-        if ( !accepted )
-        {
-            wxMessageBox("Visual attributes for OpenGL are not accepted.\nThe app will exit now.",
-                         "Error with OpenGL", wxOK | wxICON_ERROR);
-        }
-    }
 
     if ( accepted )
         m_mycanvas = new MyGLCanvas(this, vAttrs);
@@ -65,22 +49,7 @@ bool MyFrame::OGLAvailable()
     return m_mycanvas->OglCtxAvailable();
 }
 
-// ----------------------------------------------------------------------------
-// Function for receiving messages from OGLstuff and passing them to the log window
-// ----------------------------------------------------------------------------
-void fOGLErrHandler(int err, int glerr, const GLchar* glMsg)
-{
-    //
-}
-
-// ----------------------------------------------------------------------------
-// These two functions allow us to convert a wxString into a RGBA pixels array
-// ----------------------------------------------------------------------------
-
-// Creates a 4-bytes-per-pixel, RGBA array from a wxImage.
-// If the image has alpha channel, it's used. If not, pixels with 'cTrans' color
-// get 'cAlpha' alpha; and the rest of pixels get alpha=255 (opaque).
-//
+// 全局函数，用于图像、文字和像素之间的转换
 // NOTE: The returned pointer must be deleted somewhere in the app.
 unsigned char* MyImgToArray(const wxImage& img, const wxColour& cTrans, unsigned char cAlpha)
 {
@@ -117,9 +86,6 @@ unsigned char* MyImgToArray(const wxImage& img, const wxColour& cTrans, unsigned
     return resArr;
 }
 
-// Creates an array of bytes that defines the pixels of the string.
-// The background color has cAlpha transparency. 0=transparent, 255=opaque
-//
 // NOTE: The returned pointer must be deleted somewhere in the app.
 unsigned char* MyTextToPixels(const wxString& sText,     // The string
                               const wxFont& sFont,       // Font to use
@@ -162,11 +128,6 @@ unsigned char* MyTextToPixels(const wxString& sText,     // The string
     return res;
 }
 
-
-// ----------------------------------------------------------------------------
-// The canvas inside the frame. Our OpenGL connection
-// ----------------------------------------------------------------------------
-
 wxBEGIN_EVENT_TABLE(MyGLCanvas, wxGLCanvas)
     EVT_PAINT(MyGLCanvas::OnPaint)
     EVT_SIZE(MyGLCanvas::OnSize)
@@ -176,7 +137,7 @@ wxEND_EVENT_TABLE()
 //We create a wxGLContext in this constructor.
 //We do OGL initialization at OnSize().
 MyGLCanvas::MyGLCanvas(MyFrame* parent, const wxGLAttributes& canvasAttrs)
-                       : wxGLCanvas(parent, canvasAttrs)
+: wxGLCanvas(parent, canvasAttrs)
 {
     m_parent = parent;
 
@@ -224,7 +185,7 @@ bool MyGLCanvas::oglInit()
     }
 
     // Create our OGL manager, pass our OGL error handler
-    m_oglManager = new myOGLManager(&fOGLErrHandler);
+    m_oglManager = new myOGLManager();
 
     // Get the GL version for the current OGL context
     wxString sglVer = "\nUsing OpenGL version: ";
