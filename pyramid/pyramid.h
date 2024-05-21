@@ -20,11 +20,6 @@ class MyFrame : public wxFrame
 public:
     MyFrame(const wxString& title);
 
-    void SetOGLString(const wxString& ogls)
-    { 
-        m_OGLString = ogls; 
-    }
-
     bool OGLAvailable();
 
 private:

@@ -187,20 +187,6 @@ bool MyGLCanvas::oglInit()
     // Create our OGL manager, pass our OGL error handler
     m_oglManager = new myOGLManager();
 
-    // Get the GL version for the current OGL context
-    wxString sglVer = "\nUsing OpenGL version: ";
-    sglVer += wxString::FromUTF8(
-                reinterpret_cast<const char *>(m_oglManager->GetGLVersion()) );
-    // Also Vendor and Renderer
-    sglVer += "\nVendor: ";
-    sglVer += wxString::FromUTF8(
-                reinterpret_cast<const char *>(m_oglManager->GetGLVendor()) );
-    sglVer += "\nRenderer: ";
-    sglVer += wxString::FromUTF8(
-                reinterpret_cast<const char *>(m_oglManager->GetGLRenderer()) );
-    // For the menu "About" info
-    m_parent->SetOGLString(sglVer);
-
     // Load some data into GPU
     m_oglManager->SetShadersAndTriangles();
 
@@ -219,17 +205,6 @@ bool MyGLCanvas::oglInit()
     // Send it to GPU
     m_oglManager->SetStringOnPyr(sPixels, swi, shi);
     delete[] sPixels; // That memory was allocated at MyTextToPixels
-
-    // This string is placed at left bottom of the window. Its size doesn't
-    // change with window size.
-    stg = "Rotate the pyramid with\nthe left mouse button";
-    font.SetPointSize(14);
-    bgrdColo = wxColour(40, 40, 255);
-    foreColo = wxColour(*wxWHITE);
-    unsigned char* stPixels = MyTextToPixels(stg, font, foreColo, bgrdColo, 80,
-                                             &swi, &shi);
-    m_oglManager->SetImmutableString(stPixels, swi, shi);
-    delete[] stPixels;
 
     return true;
 }
