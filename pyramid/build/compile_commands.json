@@ -1,0 +1,26 @@
+[
+{
+  "directory": "D:/yj2024/cgcpp/pyramid/build",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\test.dir\\mathstuff.cpp.obj -c D:\\yj2024\\cgcpp\\pyramid\\mathstuff.cpp",
+  "file": "D:/yj2024/cgcpp/pyramid/mathstuff.cpp",
+  "output": "CMakeFiles/test.dir/mathstuff.cpp.obj"
+},
+{
+  "directory": "D:/yj2024/cgcpp/pyramid/build",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\test.dir\\oglpfuncs.cpp.obj -c D:\\yj2024\\cgcpp\\pyramid\\oglpfuncs.cpp",
+  "file": "D:/yj2024/cgcpp/pyramid/oglpfuncs.cpp",
+  "output": "CMakeFiles/test.dir/oglpfuncs.cpp.obj"
+},
+{
+  "directory": "D:/yj2024/cgcpp/pyramid/build",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\test.dir\\oglstuff.cpp.obj -c D:\\yj2024\\cgcpp\\pyramid\\oglstuff.cpp",
+  "file": "D:/yj2024/cgcpp/pyramid/oglstuff.cpp",
+  "output": "CMakeFiles/test.dir/oglstuff.cpp.obj"
+},
+{
+  "directory": "D:/yj2024/cgcpp/pyramid/build",
+  "command": "D:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/test.dir/includes_CXX.rsp -g -std=c++17 -o CMakeFiles\\test.dir\\pyramid.cpp.obj -c D:\\yj2024\\cgcpp\\pyramid\\pyramid.cpp",
+  "file": "D:/yj2024/cgcpp/pyramid/pyramid.cpp",
+  "output": "CMakeFiles/test.dir/pyramid.cpp.obj"
+}
+]
