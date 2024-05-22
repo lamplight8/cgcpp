@@ -7,14 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIREDON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(PROJECT_SOURCES
-    testGLContext.h
-    testGLContext.cpp
-    testGLCanvas.h
-    testGLCanvas.cpp
-    main.h
-    main.cpp
-    myFrame.h
-    myFrame.cpp
+    cube.h
+    cube.cpp
 )
 
 set(PROJECT_BINARY_DIR
