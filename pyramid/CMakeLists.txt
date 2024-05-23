@@ -1,18 +1,12 @@
 #cmakelists.txt
 cmake_minimum_required(VERSION 3.25.2)
-project(test VERSION 0.1.0 LANGUAGES CXX)
+project(pyramid VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIREDON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(PROJECT_SOURCES
-    mathstuff.h
-    mathstuff.cpp
-    oglpfuncs.h
-    oglpfuncs.cpp
-    oglstuff.h
-    oglstuff.cpp
     pyramid.h
     pyramid.cpp
 )
@@ -32,6 +26,6 @@ include_directories(
 
 link_directories("C:\\wxWidgets\\lib\\gcc_dll")
 
-add_executable(test ${PROJECT_SOURCES})
+add_executable(pyramid ${PROJECT_SOURCES})
 
-target_link_libraries(test ${PROJECT_BINARY_DIR})
+target_link_libraries(pyramid ${PROJECT_BINARY_DIR})

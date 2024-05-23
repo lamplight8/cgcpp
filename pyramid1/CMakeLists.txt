@@ -7,8 +7,14 @@ set(CMAKE_CXX_STANDARD_REQUIREDON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(PROJECT_SOURCES
-    cube.h
-    cube.cpp
+    mathstuff.h
+    mathstuff.cpp
+    oglpfuncs.h
+    oglpfuncs.cpp
+    oglstuff.h
+    oglstuff.cpp
+    pyramid.h
+    pyramid.cpp
 )
 
 set(PROJECT_BINARY_DIR

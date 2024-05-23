@@ -1,294 +1,256 @@
 //pyramid.cpp
 #include "pyramid.h"
-#include <iostream>
-using namespace std;
-
-#ifndef wxHAS_IMAGES_IN_RESOURCES
-    #include "../sample.xpm"
-#endif
 
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit()
 {
-    if ( !wxApp::OnInit() )
-        return false;
-
-    MyFrame* frame = new MyFrame{ wxT("绘制金字塔") };
-
-    if ( ! frame->OGLAvailable() )
-        return false;
-
-    frame->Show(true);
-
+    MyFrame* mf = new MyFrame(wxT("立方体"));
+    mf->Show();
     return true;
 }
 
 MyFrame::MyFrame(const wxString& title)
-       : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(Width, Height))
+: wxFrame(NULL, wxID_ANY, title)
 {
+    new TestGLCanvas(this);
+
     SetIcon(wxICON(sample));
 
-    // The canvas
-    m_mycanvas = NULL;
-    wxGLAttributes vAttrs;//OpenGL渲染上下文属性
-    vAttrs.PlatformDefaults().Defaults().EndList();//返回系统默认的属性列表
-    bool accepted = wxGLCanvas::IsDisplaySupported(vAttrs);
-
-    if ( accepted )
-        m_mycanvas = new MyGLCanvas(this, vAttrs);
-
-    SetMinSize(wxSize(250, 200));
+    SetClientSize(Width, Height);
 }
 
-bool MyFrame::OGLAvailable()
-{
-    if ( ! m_mycanvas )
-        return false;
+// ----------------------------------------------------------------------------
+// TestGLCanvas
+// ----------------------------------------------------------------------------
 
-    return m_mycanvas->OglCtxAvailable();
-}
-
-// 全局函数，用于图像、文字和像素之间的转换
-// NOTE: The returned pointer must be deleted somewhere in the app.
-unsigned char* MyImgToArray(const wxImage& img, const wxColour& cTrans, unsigned char cAlpha)
-{
-    int w = img.GetWidth();
-    int h = img.GetHeight();
-    int siz = w * h;
-    unsigned char *resArr = new unsigned char [siz * 4];
-    unsigned char *res = resArr;
-    unsigned char *sdata = img.GetData();
-    unsigned char *alpha = NULL;
-    if ( img.HasAlpha() )
-        alpha = img.GetAlpha();
-    // Pixel by pixel
-    for ( int i = 0; i < siz; i++ )
-    {   //copy the colour
-        res[0] = sdata[0] ;
-        res[1] = sdata[1] ;
-        res[2] = sdata[2] ;
-        if ( alpha != NULL )
-        {   //copy alpha
-            res[3] = alpha[i] ;
-        }
-        else
-        {   // Colour cTrans gets cAlpha transparency
-            if ( res[0] == cTrans.Red() && res[1] == cTrans.Green() && res[2] == cTrans.Blue() )
-                res[3] = cAlpha;
-            else
-                res[3] = 255 ;
-        }
-        sdata += 3 ;
-        res += 4 ;
-    }
-
-    return resArr;
-}
-
-// NOTE: The returned pointer must be deleted somewhere in the app.
-unsigned char* MyTextToPixels(const wxString& sText,     // The string
-                              const wxFont& sFont,       // Font to use
-                              const wxColour& sForeColo, // Foreground colour
-                              const wxColour& sBackColo, // Background colour
-                              unsigned char cAlpha,      // Background transparency
-                              int* width, int* height)   // Image sizes
-{
-    if ( sText.IsEmpty() )
-        return NULL;
-
-    // The dc where we temporally draw
-    wxMemoryDC mdc;
-
-    mdc.SetFont(sFont);
-
-    // Measure
-    mdc.GetMultiLineTextExtent(sText, width, height);
-
-    // Now we know dimensions, let's draw into a memory dc
-    wxBitmap bmp(*width, *height, 24);
-    mdc.SelectObject(bmp);
-    // If we have multiline string, perhaps not all of the bmp is used
-    wxBrush brush(sBackColo);
-    mdc.SetBackground(brush);
-    mdc.Clear(); // Make sure all of bmp is cleared
-    // Colours
-    mdc.SetBackgroundMode(wxPENSTYLE_SOLID);
-    mdc.SetTextBackground(sBackColo);
-    mdc.SetTextForeground(sForeColo);
-    // We draw the string and get it as an image.
-    // NOTE: OpenGL axis are bottom to up. Be aware when setting the texture coords.
-    mdc.DrawText(sText, 0, 0);
-    mdc.SelectObject(wxNullBitmap); // bmp must be detached from wxMemoryDC
-
-    // Bytes from the image. Background pixels become transparent with the
-    // cAlpha transparency value.
-    unsigned char *res = MyImgToArray(bmp.ConvertToImage(), sBackColo, cAlpha);
-
-    return res;
-}
-
-wxBEGIN_EVENT_TABLE(MyGLCanvas, wxGLCanvas)
-    EVT_PAINT(MyGLCanvas::OnPaint)
-    EVT_SIZE(MyGLCanvas::OnSize)
-    EVT_MOUSE_EVENTS(MyGLCanvas::OnMouse)
+wxBEGIN_EVENT_TABLE(TestGLCanvas, wxGLCanvas)
+    EVT_PAINT(TestGLCanvas::OnPaint)
 wxEND_EVENT_TABLE()
 
-//We create a wxGLContext in this constructor.
-//We do OGL initialization at OnSize().
-MyGLCanvas::MyGLCanvas(MyFrame* parent, const wxGLAttributes& canvasAttrs)
-: wxGLCanvas(parent, canvasAttrs)
+TestGLCanvas::TestGLCanvas(wxWindow *parent)
+: wxGLCanvas(parent, wxID_ANY, NULL,
+    wxDefaultPosition, wxDefaultSize, wxFULL_REPAINT_ON_RESIZE)
 {
-    m_parent = parent;
 
-    m_oglManager = NULL;
-    m_winHeight = 0; // We have not been sized yet
-
-    // Explicitly create a new rendering context instance for this canvas.
-    wxGLContextAttrs ctxAttrs;
-    ctxAttrs.PlatformDefaults().CoreProfile().OGLVersion(3, 2).EndList();
-    m_oglContext = new wxGLContext(this, NULL, &ctxAttrs);
 }
 
-MyGLCanvas::~MyGLCanvas()
+void TestGLCanvas::OnPaint(wxPaintEvent& WXUNUSED(event))
 {
-    if ( m_oglContext )
-        SetCurrent(*m_oglContext);
-
-    if ( m_oglManager )
-    {
-        delete m_oglManager;
-        m_oglManager = NULL;
-    }
-
-    if ( m_oglContext )
-    {
-        delete m_oglContext;
-        m_oglContext = NULL;
-    }
-}
-
-bool MyGLCanvas::oglInit()
-{
-    if ( !m_oglContext )
-        return false;
-
-    // The current context must be set before we get OGL pointers
-    SetCurrent(*m_oglContext);
-
-    // Initialize our OGL pointers
-    if ( !myOGLManager::Init() )
-    {
-        wxMessageBox("Error: Some OpenGL pointer to function failed.",
-            "OpenGL initialization error", wxOK | wxICON_INFORMATION, this);
-        return false;
-    }
-
-    // Create our OGL manager, pass our OGL error handler
-    m_oglManager = new myOGLManager();
-
-    // Load some data into GPU
-    m_oglManager->SetShadersAndTriangles();
-
-    // This string will be placed on a face of the pyramid
-    int swi = 0, shi = 0; //Image sizes
-    wxString stg("wxWidgets");
-    // Set the font. Use a big pointsize so as to smoothing edges.
-    wxFont font(wxFontInfo(48).Family(wxFONTFAMILY_MODERN));
-    if ( !font.IsOk() )
-        font = *wxSWISS_FONT;
-    wxColour bgrdColo(*wxBLACK);
-    wxColour foreColo(160, 0, 200); // Dark purple
-    // Build an array with the pixels. Background fully transparent
-    unsigned char* sPixels = MyTextToPixels(stg, font, foreColo, bgrdColo, 0,
-                                            &swi, &shi);
-    // Send it to GPU
-    m_oglManager->SetStringOnPyr(sPixels, swi, shi);
-    delete[] sPixels; // That memory was allocated at MyTextToPixels
-
-    return true;
-}
-
-void MyGLCanvas::OnPaint( wxPaintEvent& WXUNUSED(event) )
-{
-    // This is a dummy, to avoid an endless succession of paint messages.
-    // OnPaint handlers must always create a wxPaintDC.
+    // This is required even though dc is not used otherwise.
     wxPaintDC dc(this);
+    const wxSize ClientSize = GetClientSize() * GetContentScaleFactor();
 
-    // Avoid painting when we have not yet a size
-    if ( m_winHeight < 1 || !m_oglManager )
-        return;
-
-    // This should not be needed, while we have only one canvas
-    SetCurrent(*m_oglContext);
-
-    // Do the magic
-    m_oglManager->Render();
-
+    myGLContext* glc = new myGLContext(this);
+    glViewport(0, 0, ClientSize.x, ClientSize.y);
+    glc->DrawPyramid();
     SwapBuffers();
 }
 
-//Note:
-// You may wonder why OpenGL initialization was not done at wxGLCanvas ctor.
-// The reason is due to GTK+/X11 working asynchronously, we can't call
-// SetCurrent() before the window is shown on screen (GTK+ doc's say that the
-// window must be realized first).
-// In wxGTK, window creation and sizing requires several size-events. At least
-// one of them happens after GTK+ has notified the realization. We use this
-// circumstance and do initialization then.
-
-void MyGLCanvas::OnSize(wxSizeEvent& event)
+myGLContext::myGLContext(wxGLCanvas *canvas)
+: wxGLContext(canvas)
 {
-    event.Skip();
-
-    // If this window is not fully initialized, dismiss this event
-    if ( !IsShownOnScreen() )
-        return;
-
-    if ( !m_oglManager )
-    {
-        //Now we have a context, retrieve pointers to OGL functions
-        if ( !oglInit() )
-            return;
-        //Some GPUs need an additional forced paint event
-        PostSizeEvent();
-    }
-
-    // This is normally only necessary if there is more than one wxGLCanvas
-    // or more than one wxGLContext in the application.
-    SetCurrent(*m_oglContext);
-
-    // It's up to the application code to update the OpenGL viewport settings.
-    const wxSize size = event.GetSize() * GetContentScaleFactor();
-    m_winHeight = size.y;
-    m_oglManager->SetViewport(0, 0, size.x, m_winHeight);
-
-    // Generate paint event without erasing the background.
-    Refresh(false);
+    SetCurrent(*canvas);
 }
 
-void MyGLCanvas::OnMouse(wxMouseEvent& event)
+void myGLContext::DrawPyramid()
 {
-    event.Skip();
+    glClearColor(0.5, 0.5, 0.5, 0.0);//设置背景色
+    glClearDepth(1.0f);//初始化深度
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST);//开启深度测试
+    glShadeModel(GL_SMOOTH);//平滑阴影模式
 
-    // GL 0 Y-coordinate is at bottom of the window
-    int oglwinY = m_winHeight - event.GetY();
+    glMatrixMode(GL_PROJECTION);//选择投影矩阵
+    glLoadIdentity();
+    
+    GLfloat fov = 60;//眼睛上下睁开的角度
+    GLfloat zNear = 0.1;//前裁剪面
+    GLfloat zFar = 100.0;//后裁剪面
+    GLfloat rFov = fov * PI / 180.0;
+    glFrustum( -zNear * tanf( rFov / 2.0 ) * GLfloat(Width)/Height,
+              zNear * tanf( rFov / 2.0 ) * GLfloat(Width)/Height,
+              -zNear * tanf( rFov / 2.0 ),
+              zNear * tanf( rFov / 2.0 ),
+              zNear, zFar );
+    glMatrixMode(GL_MODELVIEW);//选择模式矩阵
+    glLoadIdentity();//重置模式矩阵
+    //设置光照(定义一个位于左上方的白色定位光源)
+    GLfloat lmodel_ambient[] = { 1.0f,1.0f,1.0f,1.0f };//定义环境光
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);//设置环境光
+    GLfloat light0_ambient[] = { 1.0,1.0,1.0,1.0 };//定义光源环境光
+    GLfloat light0_diffuse[] = { 1.0,1.0,1.0,1.0 };//定义光源散射光
+    GLfloat light0_specular[] = { 1.0,1.0,1.0,1.0 };//定义光源反射光
+    GLfloat light0_position[] = { 15.0,15.0,15.0,10.0 };//定义光源位置
+    glLightfv(GL_LIGHT0, GL_AMBIENT, light0_ambient);//设置光源环境光
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);//设置光源散射光
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light0_specular);//设置光源反射光
+    glLightfv(GL_LIGHT0, GL_POSITION, light0_position);//设置光源位置
+    glEnable(GL_LIGHT0);//启用光源
+    glEnable(GL_LIGHTING);//启用光照效果
 
-    if ( event.LeftIsDown() )
+    //定义黄铜材质
+    GLfloat brass_ambient[] = { 0.329412f,0.223529f,0.027451f,1.0f };//定义材质环境光
+    GLfloat brass_diffuse[] = { 0.780392f,0.568627f,0.113725f,1.0f };//定义材质散射光
+    GLfloat brass_specular[] = { 0.992157f,0.941176f,0.807843f,1.0f };//定义材质反射光
+    GLfloat brass_sinines[] = { 100.0f };//定义材质镜面反射强度
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, brass_ambient);//设置材质环境光
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, brass_diffuse);//设置材质散射光
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, brass_specular);//设置材质反射光
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, brass_sinines);//设置材质镜面反射强度
+    //设置坐标系统
+    glTranslatef(0.0f, -0.1f, -2.0f);//将坐标系统下移0.1，后移2.0
+    glRotatef(45, 1.0, 0.0, 0.0);//将坐标系统绕x轴逆时针旋转45度
+    glRotatef(30, 0.0, -1.0, 0.0);//将坐标系统绕y轴顺时针旋转30度
+
+    //绘制金字塔
+    GLfloat pyramid[][3] = {
+        { 0.0,1.0,0.0 },
+        { 0.5,0.0,0.5 },
+        { -0.5,0.0,0.5 },
+        { -0.5,0.0,-0.5 },
+        { 0.5,0.0,-0.5 }
+    };
+    glBegin(GL_TRIANGLE_FAN);//使用扇形三角形模式
+    glNormal3f(0.0, 0.447214f, 0.894427f);//前平面法向量
+    glVertex3fv(pyramid[0]);//前平面
+    glVertex3fv(pyramid[1]);
+    glVertex3fv(pyramid[2]);
+    glNormal3f(-0.894427f, 0.447214f, 0.0);//左平面法向量
+    glVertex3fv(pyramid[3]);//左平面
+    glNormal3f(0.0, 0.447214f, -0.894427f);//后平面法向量
+    glVertex3fv(pyramid[4]);//后平面
+    glNormal3f(0.894427f, 0.447214f, 0.0);//右平面法向量
+    glVertex3fv(pyramid[1]);//右平面
+    glEnd();//结束绘制
+
+    //定义塑料材质
+    GLfloat plastic_ambient[] = { 0.0f,0.0f,0.00f,1.0f };//定义材质环境光
+    GLfloat plastic_diffuse[] = { 0.7f,0.85f,0.7f,1.0f };//定义材质散射光
+    GLfloat plastic_specular[] = { 0.75f,0.75f,0.75f,1.0f };//定义材质反射光
+    GLfloat plastic_sinines[] = { 10.0f };//定义材质镜面反射强度
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, plastic_ambient);//设置材质环境光
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, plastic_diffuse);//设置材质散射光
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, plastic_specular);//设置材质反射光
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, plastic_sinines);//设置材质镜面反射强度
+//定义纹理图案(类似于国际象棋的黑白棋盘)
+#define textureWidth  64//定义纹理图案宽度
+#define textureHeight 64//定义纹理图案高度
+    GLubyte texture[textureWidth][textureHeight][3];//定义纹理图案数组，3分量
+    GLubyte c;
+    for (int i = 0; i<textureWidth; i++)//生成纹理图案数组
     {
-        if ( ! event.Dragging() )
+        for (int j = 0; j<textureHeight; j++)
         {
-            // Store positions
-            m_oglManager->OnMouseButDown(event.GetX(), oglwinY);
-        }
-        else
-        {
-            // Rotation
-            m_oglManager->OnMouseRotDragging( event.GetX(), oglwinY );
-
-            // Generate paint event without erasing the background.
-            Refresh(false);
+            c = (((i & 8) == 0) ^ ((j & 8) == 0)) * 255;
+            texture[i][j][0] = c;
+            texture[i][j][1] = c;
+            texture[i][j][2] = c;
         }
     }
-}
 
+    glTexImage2D(//定义纹理
+        GL_TEXTURE_2D,//二维纹理
+        0,//纹理级别，单重纹理
+        3,//3分量模式，包含R、G、B信息
+        textureWidth,//纹理图案宽度
+        textureHeight,//纹理图案高度
+        0,//纹理边界宽度
+        GL_RGB,//纹理图案数据种类
+        GL_UNSIGNED_BYTE,//纹理图案数据存储类型
+        &texture[0][0][0]//纹理图案数据起始地址
+        );
+
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);//设置纹理在s方向上重复
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);//设置纹理在t方向上重复
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);//设置纹理放大方式
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);//设置纹理缩小方式
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);//设置调节映射方式
+    glEnable(GL_TEXTURE_2D);//启用纹理映射
+    GLfloat texpoints[2][2][2] =//定义纹理坐标(s,t)
+        {
+            { { 0.0,0.0 },{ 1.0,0.0 } },
+            { { 0.0,1.0 },{ 1.0,1.0 } }
+        };
+    glMap2f(//定义纹理坐标求值器
+        GL_MAP2_TEXTURE_COORD_2,//求值器生成值种类，选用纹理坐标
+        0, 1,	//u的取值范围
+        2,//u的跨度 = u方向上两个值之间的间隔 = texpoints数组第一个维度
+        2,	//u的阶数 = texpoints数组第二个维度
+        0, 1,	//v的取值范围
+        4,	//v的跨度 = v方向上两个值之间的间隔 = texpoints数组第一个维度*第二个纬度
+        2,	//v的阶数 = texpoints数组第三个维度
+        &texpoints[0][0][0]		//控制点矩阵的指针
+        );
+    glEnable(GL_MAP2_TEXTURE_COORD_2);//激活纹理坐标求值器
+
+    //定义曲面控制点
+#define ustride 3//u的跨度
+#define uorder 6//u的阶数
+#define vstride (ustride * uorder)//v的跨度
+#define vorder 5//v的阶数
+    GLdouble points[vorder][uorder][ustride] =//定义顶点坐标(x,y,z)
+        {
+            {
+                {-2.00f,0.4f,-1.00f },
+                { -1.20f,0.3f,-1.00f },
+                { -0.40f,0.4f,-1.00f },
+                { 0.40f,-0.3f,-1.00f },
+                { 1.20f,0.0f,-1.00f },
+                { 2.00f,0.5f,-1.00f }
+            },
+            {
+                { -2.00f,0.1f,-0.60f },
+                { -1.20f,0.0f,-0.60f },
+                { -0.40f,0.5f,-0.60f },
+                { 0.40f,0.0f,-0.60f },
+                { 1.20f,0.0f,-0.60f },
+                { 2.00f,0.0f,-0.60f }
+            },
+            {
+                { -2.00f,0.3f,-0.20f },
+                { -1.20f,0.3f,-0.20f },
+                { -0.40f,0.0f,-0.20f },
+                { 0.40f,0.0f,-0.20f },
+                { 1.20f,0.0f,-0.20f },
+                { 2.00f,0.5f,-0.20f }
+            },
+            {
+                { -2.00f,0.1f,0.50f },
+                { -1.20f,0.2f,0.20f },
+                { -0.40f,0.0f,0.50f },
+                { 0.40f,0.0f,0.20f },
+                { 1.20f,0.6f,0.60f },
+                { 2.00f,0.0f,0.40f }
+            },
+            {
+                { -2.00f,-0.5f,1.00f },
+                { -1.20f,0.6f,1.00f },
+                { -0.40f,0.0f,1.00f },
+                { 0.40f,0.0f,1.00f },
+                { 1.20f,0.1f,1.00f },
+                { 2.00f,0.5f,1.00f }
+            }
+        };
+
+    glMap2d(//定义顶点坐标求值器
+        GL_MAP2_VERTEX_3,
+        0, 1, ustride, uorder,
+        0, 1, vstride, vorder,
+        &points[0][0][0]
+        );
+    glEnable(GL_MAP2_VERTEX_3);//激活顶点坐标求值器
+
+    //绘制曲面
+    glPushMatrix();//将当前模视矩阵压栈，防止当前变换影响原有的变换模式
+    glLoadIdentity();//重置模视矩阵
+    glTranslatef(0.0f, -0.1f, -2.2f);//将坐标系统下移0.1，后移2.2
+    glRotatef(45, 1.0, 0.0, 0.0);//将坐标系统绕x轴逆时针旋转45度
+
+    glMapGrid2f(20, 0.0, 1.0, 20, 0.0, 1.0);//定义二维均布网格
+    glEvalMesh2(GL_FILL, 0, 20, 0, 20);//生成二维多边形网格
+
+    glDisable(GL_TEXTURE_2D);//禁用纹理映射
+    glPopMatrix();//将模视矩阵出栈
+    glFlush();
+}
