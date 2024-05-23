@@ -1,6 +1,11 @@
 //pyramid.cpp
 #include "pyramid.h"
 
+enum
+{
+    SpinTimer = wxID_HIGHEST + 1
+};
+
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit()
@@ -26,11 +31,14 @@ MyFrame::MyFrame(const wxString& title)
 
 wxBEGIN_EVENT_TABLE(TestGLCanvas, wxGLCanvas)
     EVT_PAINT(TestGLCanvas::OnPaint)
+    EVT_KEY_DOWN(TestGLCanvas::OnKeyDown)
+    EVT_TIMER(SpinTimer, TestGLCanvas::OnSpinTimer)
 wxEND_EVENT_TABLE()
 
 TestGLCanvas::TestGLCanvas(wxWindow *parent)
 : wxGLCanvas(parent, wxID_ANY, NULL,
-    wxDefaultPosition, wxDefaultSize, wxFULL_REPAINT_ON_RESIZE)
+    wxDefaultPosition, wxDefaultSize, wxFULL_REPAINT_ON_RESIZE),
+    m_xangle(45), m_yangle(30), m_spinTimer(this, SpinTimer)
 {
 
 }
@@ -43,8 +51,56 @@ void TestGLCanvas::OnPaint(wxPaintEvent& WXUNUSED(event))
 
     myGLContext* glc = new myGLContext(this);
     glViewport(0, 0, ClientSize.x, ClientSize.y);
-    glc->DrawPyramid();
+    glc->DrawPyramid(m_xangle, m_yangle);
     SwapBuffers();
+}
+
+void TestGLCanvas::Spin(float xSpin, float ySpin)
+{
+    m_xangle += xSpin;
+    m_yangle += ySpin;
+
+    Refresh(false);
+}
+
+void TestGLCanvas::OnKeyDown(wxKeyEvent& event)
+{
+    float angle = 5.0;
+
+    switch ( event.GetKeyCode() )
+    {
+        case WXK_RIGHT:
+            Spin( 0.0, -angle );
+            break;
+
+        case WXK_LEFT:
+            Spin( 0.0, angle );
+            break;
+
+        case WXK_DOWN:
+            Spin( -angle, 0.0 );
+            break;
+
+        case WXK_UP:
+            Spin( angle, 0.0 );
+            break;
+
+        case WXK_SPACE:
+            if ( m_spinTimer.IsRunning() )
+                m_spinTimer.Stop();
+            else
+                m_spinTimer.Start( 25 );
+            break;
+
+        default:
+            event.Skip();
+            return;
+    }
+}
+
+void TestGLCanvas::OnSpinTimer(wxTimerEvent& WXUNUSED(event))
+{
+    Spin(0.0, 4.0);
 }
 
 myGLContext::myGLContext(wxGLCanvas *canvas)
@@ -53,7 +109,7 @@ myGLContext::myGLContext(wxGLCanvas *canvas)
     SetCurrent(*canvas);
 }
 
-void myGLContext::DrawPyramid()
+void myGLContext::DrawPyramid(float xangle, float yangle)
 {
     glClearColor(0.5, 0.5, 0.5, 0.0);//设置背景色
     glClearDepth(1.0f);//初始化深度
@@ -100,8 +156,8 @@ void myGLContext::DrawPyramid()
     glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, brass_sinines);//设置材质镜面反射强度
     //设置坐标系统
     glTranslatef(0.0f, -0.1f, -2.0f);//将坐标系统下移0.1，后移2.0
-    glRotatef(45, 1.0, 0.0, 0.0);//将坐标系统绕x轴逆时针旋转45度
-    glRotatef(30, 0.0, -1.0, 0.0);//将坐标系统绕y轴顺时针旋转30度
+    glRotatef(xangle, 1.0, 0.0, 0.0);//将坐标系统绕x轴逆时针旋转45度
+    glRotatef(yangle, 0.0, -1.0, 0.0);//将坐标系统绕y轴顺时针旋转30度
 
     //绘制金字塔
     GLfloat pyramid[][3] = {

@@ -24,7 +24,7 @@ class myGLContext : public wxGLContext
 {
 public:
     myGLContext(wxGLCanvas *canvas);
-    void DrawPyramid();
+    void DrawPyramid(float xangle, float yangle);
 };
 
 class TestGLCanvas : public wxGLCanvas
@@ -33,7 +33,13 @@ public:
     TestGLCanvas(wxWindow *parent);
 private:
     void OnPaint(wxPaintEvent& event);
-
+    void Spin(float xSpin, float ySpin);
+    void OnKeyDown(wxKeyEvent& event);
+    void OnSpinTimer(wxTimerEvent& WXUNUSED(event));
+    
+    float m_xangle;
+    float m_yangle;
+    wxTimer m_spinTimer;
     wxDECLARE_EVENT_TABLE();
 };
 
